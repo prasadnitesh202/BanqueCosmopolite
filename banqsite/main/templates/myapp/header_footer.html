@@ -74,7 +74,13 @@
       </ul>
     
       <form class="form-inline my-2 my-lg-0">
-        <a href="{{ string }}" class="{{ button_class }}" type="submit">{{ button }}</a>
+        {% if user.is_authenticated %}
+        <a class="navbar-brand" href="/account" style="font-size: 140%">Welcome {{ user.first_name }}</a>
+        <a href="/logout" class="btn btn-outline-danger mr-sm-2" type="submit">Logout</a>
+        {% else %}
+        <a href="/login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</a>
+        {% endif %}
+
       </form>
     </div>
   </nav>

@@ -19,8 +19,10 @@
 
 <!--Cards(Services)-->
 
-<div class="container" id="Services"> 
-
+<div class="container" id="Services">
+  {% if user.is_authenticated %}
+<div>{{ user.last_name }}</div>
+{% endif %}
   <div class="row">
 
       <div class="col-md-4">  
@@ -58,6 +60,7 @@
         </div>
         <div class="col-xs"><br></div>
       </div>
+}
       
 
 </div>
