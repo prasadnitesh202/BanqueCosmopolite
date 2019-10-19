@@ -1,0 +1,225 @@
+{% extends 'myapp/header_footer.html' %}
+{% block content %}
+   {% load static %}
+    {% load static %}
+      <link rel="stylesheet" href="{% static 'stylesheets/Account_style.css' %}">
+    <!-- <link href='Account_style.css' rel='stylesheet'> -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<!--Info-->
+<div class="container-fluid" style="background: rgba(255, 255, 255, 0.863);">
+    <div class="row">
+        <div class="col-md-4">  
+        <img src='{% static "img/account.jpg" %}'  style="width: 90%; height: 90%; padding:10% 2% 0% 2%;">
+
+        <!-- <img src="img/account.jpg" style="width: 90%; height: 90%; padding:10% 2% 0% 2%;"> -->
+    </div>
+        <div class="col-md-4" >
+<br/>
+<br/>
+        <h3>Name:{{name}}</h3>
+        <br/>
+        <br/>
+        <h3>email:{{email}}</h3>
+    </div>
+    <div class="col-md-4">
+<br/>
+<br/>
+        <h3>Account Id:{{ano}}</h3>
+        <br/>
+        <br/>
+        <h3>Branch:{{bname}}</h3>
+    </div>
+</div>
+</div>
+
+<br/>
+
+
+<!--Cards 1-->
+
+<div class="container-fluid" style="background-color: rgb(38, 50, 66);"> 
+  <br>
+  <div class="container" style="background-color: rgb(38, 50, 66);"> 
+  <div class="container" id="Services"> 
+  
+    <div class="row">
+  
+        <div class="col-md-3">  
+          <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header" style="text-align: center;">Balance:</div>
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;">12345678</h5>
+            </div>
+          </div>
+            <div class="col-xs"><br></div>
+          </div>
+  
+          <div class="col-md-3">  
+            <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+              <div class="card-header" style="text-align: center;">Transaction:</div>
+              <div class="card-body">
+                <h5 class="card-title" style="text-align: center;">+5000</h5>
+              </div>
+            </div>
+          <div class="col-xs"><br></div>
+        </div>
+  
+        <div class="col-md-3">  
+          <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+            <div class="card-header" style="text-align: center;">Maturities:</div>
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;">2 this month</h5>
+            </div>
+          </div>
+          <div class="col-xs"><br></div>
+        </div>
+        
+        <div class="col-md-3">
+          <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+            <div class="card-header" style="text-align: center;">Header</div>
+            <div class="card-body">
+              <h5 class="card-title"  style="text-align: center;">Warning card title</h5>
+            </div>
+          </div>
+        </div>
+  
+  </div>
+  </div>
+  </div>
+  </div>
+  
+
+
+<!--Carousel-->
+<div class="container-fluid" id="Services" style="background-color: rgba(255,255,255,0.8);"> 
+<br> 
+  <div class="bd-example">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+      
+        <div class="carousel-item active">
+  <a href="/atmfinder">  
+    
+    
+    <img src='{% static "img/calc.jpg" %}' class="d-block w-100" alt="..." id="ATM" >
+
+          
+	  <!-- <img src="img/calc.jpg" class="d-block w-100" alt="..." id="ATM"> -->
+	</a>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>ATM Locatorl</h5>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </div>
+        </div>
+
+	<div class="carousel-item">
+  <a href="/Chatbot">
+    
+          <img src='{% static "img/rupee.jpg" %}' class="d-block w-100" alt="..." id="Chatbot" >
+
+    
+          <!-- <img src="img/rupee.jpg"class="d-block w-100" alt="..." id="Chatbot"> -->
+	</a>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Chatbot</h5>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+  <a href="/atmfinder">
+          <img src='{% static "img/homeloan.jpg" %}' class="d-block w-100" alt="..." id="Branch" >
+
+          <!-- <img src="img/homeloan.jpg" class="d-block w-100" alt="..." id="Branch"> -->
+	</a>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Branch Locator</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+<br/>
+  </div>
+
+
+<!--Cards 2-->
+
+<div class="container-fluid" style="background-color: rgb(68, 71, 77);"> 
+<br>
+<div class="container" style="background-color: rgb(68, 71, 77);"> 
+<div class="container" id="Services"> 
+
+  <div class="row">
+
+      <div class="col-md-4">  
+         <div class="card" style="width: 18rem;">
+	  <div class="card-body">
+	    <h5 class="card-title">My Cards</h5>
+	    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	    <a href="#" class="card-link">Card 1</a>
+	    <a href="#" class="card-link">Card 2</a>
+	  </div>
+	</div>
+          <div class="col-xs"><br></div>
+        </div>
+
+        <div class="col-md-4">  
+        <div class="card" style="width: 18rem;">
+	  <div class="card-body">
+	    <h5 class="card-title">My transactions</h5>
+	    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	    <a href="#" class="card-link">Deposit</a>
+	    <a href="#" class="card-link">Withdrawal</a>
+	  </div>
+	</div>
+        <div class="col-xs"><br></div>
+      </div>
+
+      <div class="col-md-4">  
+        <div class="card" style="width: 18rem;">
+	  <div class="card-body">
+	    <h5 class="card-title">My EMIs/Loans</h5>
+	    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	    <a href="#" class="card-link">New</a>
+	    <a href="#" class="card-link">Ongoing</a>
+	  </div>
+	</div>
+        <div class="col-xs"><br></div>
+      </div>
+      
+
+</div>
+</div>
+</div>
+</div>
+
+<!--Cards 3-->
+
+
+{% endblock %}
