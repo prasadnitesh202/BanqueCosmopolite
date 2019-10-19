@@ -8,4 +8,7 @@ urlpatterns = [
     path("", views.home, name="home"),
     path('chatbot/', views.chatbot, name='chatbot'),
     path('login/', views.login, name='login'),
+    path('account/', views.account, name='account'),
+    
+
 ]

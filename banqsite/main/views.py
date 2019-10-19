@@ -13,4 +13,8 @@ def chatbot(request):
 
 
 def login(request):
-	return render(request, 'myapp/login.html')
+    return render(request, 'myapp/login.html')
+
+
+def account(request):
+    return render(request, 'myapp/account.html')
