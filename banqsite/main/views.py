@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -18,7 +19,7 @@ def chatbot(request):
 # def login(request):
 #     return render(request, 'myapp/login.html')
 
-
+@login_required(login_url='/login/')
 def account(request):
     return render(request, 'myapp/account.html')
 
