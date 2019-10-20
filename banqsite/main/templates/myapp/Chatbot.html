@@ -1,6 +1,24 @@
 {% extends 'myapp/header_footer.html' %}
 {% block content %}
    {% load static %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+   
+
+    <link href="{% static 'stylesheets/Chatbot_style.css' %}" rel='stylesheet'>
+      <script src="{% static 'Chatbot_script.js' %}"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--Navbar-->  
+
 <br>
     <div class="col-md-6 col-lg-4" style="float: right;">      
         <iframe 
@@ -13,16 +31,49 @@
       
     </div>
 
+
+    <div style="padding: 0% 0% 0% 1%;" class="btn-group">
+      <h5 style="margin-top: 2%; color: aqua;">Select</h5>
+      <p style="color: rgba(0,0,0,0);">.</p>
+      <select class="custom-select" id="Account">
+  <option selected>Account</option>
+  {% for account in accounts %}
+  <option value="{{ account }}">{{ account }}</option>
+  {% endfor %}
+</select>
+
+  </div>
+  <p id="demo"></p>
+
 <!--Jumbotron-->
 <div class="jumbotron" style="background: none;">
-        <h2 class="display-4" style="color: white; width: 60%">ChatBot at your Help</h2>
-        <p class="lead" style="width: 45%">Always there for you when you need help. It can resolve your doubt and that too for free. Used around the clock and trusted by 500,000 people.
-        </p>
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
 
+
+        <h2 class="display-4" style="color: white; width: 60%">ChatBot at your Help!</h2>
+        <h6 class="lead" style="width: 45%">Always there for you when you need help. It can resolve your doubt and that too for free. Used around the clock and trusted by 500,000 people.
+        </h6>
+        <br/>
+        <div id="Questions">
+            <h5>Type of Questions you can ask:</h5>
+            <p>What is my balance?</p>
+            <p>What were my last month/week 's Transactions?</p>
+            <p>When was the Bank established?</p>
+        </div>
+</div>
+
+<script>
+   $(document).ready(function() {
+    $("#Account").change(function(){
+        $.ajax({
+                type:'POST',
+                url: '/ajax/',
+              data:  {'keyname':$('#Account option:selected').val()},
+              dataType: 'json',
+              success: function (data) {
+            console.log(data.is_success);
+        }
+             });
+    });
+});
+</script>
 {% endblock %}

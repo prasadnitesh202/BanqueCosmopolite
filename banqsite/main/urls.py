@@ -11,6 +11,7 @@ urlpatterns = [
     path('account/', views.account, name='account'),
     path('logout/', views.logout_request, name='logout'),
     path('webhook/', views.webhook, name='webhook'),
+    path('ajax/', views.ajax, name='ajax'),
     
 
 ]

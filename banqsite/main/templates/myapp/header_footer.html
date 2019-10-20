@@ -5,7 +5,7 @@
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -73,15 +73,19 @@
         </li>
       </ul>
     
-      <form class="form-inline my-2 my-lg-0">
+      
         {% if user.is_authenticated %}
+        <form class="form-inline my-2 my-lg-0">
         <a class="navbar-brand" href="/account" style="font-size: 140%">Welcome {{ user.first_name }}</a>
         <a href="/logout" class="btn btn-outline-danger mr-sm-2" type="submit">Logout</a>
+      </form>
         {% else %}
+        <form class="form-inline my-2 my-lg-0">
         <a href="/login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</a>
+        </form>
         {% endif %}
 
-      </form>
+      
     </div>
   </nav>
 

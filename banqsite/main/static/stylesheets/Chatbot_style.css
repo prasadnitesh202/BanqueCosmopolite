@@ -13,7 +13,7 @@ body
 /*Footer*/
 
 #Contact{
-    margin-top: 60%;
+    margin-top: 10%;
 }
 footer h4{
     color: white;
@@ -56,3 +56,22 @@ footer h4{
 
   /*Footer-End*/
 
+  #Questions{
+    color:white;
+    background-color: rgba(255, 255, 255, 0.397);
+    width:40%;
+  }
+
+  .jumbotron p{
+    padding-left: 5%;
+  }
+
+  .jumbotron h5{
+    padding-left: 3%;
+  }
+
+  @media screen and (max-width: 800px) {
+    #Questions{
+      display: none;
+    }
+  }
