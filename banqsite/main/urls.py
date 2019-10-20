@@ -10,6 +10,7 @@ urlpatterns = [
     path('login/', views.login_req, name='login'),
     path('account/', views.account, name='account'),
     path('logout/', views.logout_request, name='logout'),
+    path('webhook/', views.webhook, name='webhook'),
     
 
 ]

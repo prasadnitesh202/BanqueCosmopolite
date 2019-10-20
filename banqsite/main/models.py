@@ -73,6 +73,9 @@ class BankUser(models.Model):
     u_phone = models.CharField(max_length=10)
     birth_date = models.DateField()
     credit_score = models.IntegerField()
+    def __str__(self):
+        return str(self.user)
+
 
 
 # class BankUser(models.Model):
