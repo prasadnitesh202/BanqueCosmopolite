@@ -41,6 +41,7 @@ def login_req(request):
                     template_name = "myapp/Login.html",
                     context={"form":form})
 
+
 def logout_request(request):
     logout(request)
     return redirect("main:home")
