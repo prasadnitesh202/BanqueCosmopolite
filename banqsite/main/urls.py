@@ -17,6 +17,8 @@ urlpatterns = [
     path('cash_mgmt/', views.cash_mgmt,name='cash_mgmt'),
     path('monket/', views.monket,name='monket'),
     path('hsave/', views.hsave,name='hsave'),
+    path('prepaid/', views.prepaid,name='prepaid'),
+    path('savings/', views.savings,name='savings'),
     
 
 ]

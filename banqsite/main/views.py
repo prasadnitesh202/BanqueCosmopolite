@@ -45,6 +45,12 @@ def monket(request):
 def checkin(request):
     return render(request, 'myapp/Checking.html')
 
+def savings(request):
+    return render(request, 'myapp/Savings.html')
+
+def prepaid(request):
+    return render(request, 'myapp/Prepaid.html')
+
 
 def hsave(request):
     return render(request, 'myapp/Health_Savings.html')

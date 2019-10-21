@@ -1,0 +1,44 @@
+{% extends 'myapp/header_footer.html' %}
+      
+
+{% block content %}
+   {% load static %}
+   <link href="{% static 'stylesheets/Savings_style.css' %}" rel='stylesheet'>
+  <div class="col-xs-12" style="padding: 2%;">
+        <h1>Regular Savings</h1>
+        <p style="color: black;">A traditional savings account is the first step in a regular savings program.</p>
+      </div>
+      
+      <br/>
+      
+      <div class="col-xs-12" style="padding: 2%;">
+          <h1>Account Details</h1>
+          <ul style="color: black;">
+              <li>Earn interest on all collected balances</li>
+              <li>Open an accoount with Rs.500</li>
+            
+          </ul>
+      </div>
+      
+      <br/>
+      
+      <div class="col-xs-12" style="padding: 2%;">
+          <h1>Available Services</h1>
+          <ul style="color: black;">
+              <li>Online Banking</li>
+              <li>Mobile Banking</li>
+              <li>Online Statements</li>
+              
+          </ul>
+      </div>
+      
+      <br/>
+      
+      <div class="col-xs-12" style="padding: 2%;">
+              <h1>What You Need to Know</h1>
+              <p style="color: black;">Avoid the Rs.50 monthly service charge by maintaining a Rs.100 average daily balance
+                    Federal Regulation limits savings account withdrawals to 6 per month.
+                    See our Fee Schedule for the cost of additional withdrawals.</p>
+            </div>
+
+{% endblock %}
