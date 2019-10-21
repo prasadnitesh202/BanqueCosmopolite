@@ -130,6 +130,7 @@ class Card(models.Model):
     valid_from = models.DateField(default=datetime.now)
     valid_thru = models.DateField()
     cvv = models.CharField(max_length=3)
+    img=models.ImageField(upload_to='images/',default='/images/download.jpg')
 
     class Meta:
         unique_together = ('card_type', 'acc_no')
