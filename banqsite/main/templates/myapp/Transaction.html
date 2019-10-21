@@ -1,0 +1,52 @@
+{% extends 'myapp/header_footer.html' %}
+      
+
+{% block content %}
+   {% load static %}
+   <link href="{% static 'stylesheets/Transaction_style.css' %}" rel='stylesheet'>
+
+<br/>
+
+<!--Transaction Table-->
+<div class="container-fluid" style="background-color: white;;">
+	<table class="table table-bordered table-hover table-responsive-xs">
+	  <thead class="thead-dark">
+	    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Amount</th>
+	      <th scope="col">Type</th>
+        <th scope="col">Mode</th>
+        <th scope="col">Date</th>
+	      <th scope="col">Time</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	      <th scope="row">1</th>
+	      <td>5000</td>
+	      <td>Deposit</td>
+        <td>Cash</td>
+        <td>06-10-2019</td>
+        <td>01:00 PM</td>
+	    </tr>
+	    <tr>
+	      <th scope="row">1</th>
+	      <td>1234</td>
+	      <td>Withdrawal</td>
+        <td>Debit Card</td>
+        <td>05-10-2019</td>
+        <td>04:00 PM</td>
+	    </tr>
+	    <tr>
+	      <th scope="row">1</th>
+	      <td>65575</td>
+	      <td>Withdrawal</td>
+        <td>Challan</td>
+        <td>06-10-2019</td>
+        <td>11:00 AM</td>
+	    </tr>
+	  </tbody>
+	</table>
+</div>
+
+{% endblock %}

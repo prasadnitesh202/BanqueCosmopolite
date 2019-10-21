@@ -51,6 +51,9 @@ def savings(request):
 def prepaid(request):
     return render(request, 'myapp/Prepaid.html')
 
+def transaction(request):
+    return render(request, 'myapp/Transaction.html')
+
 
 def hsave(request):
     return render(request, 'myapp/Health_Savings.html')
