@@ -45,6 +45,10 @@ def monket(request):
 def checkin(request):
     return render(request, 'myapp/Checking.html')
 
+
+def hsave(request):
+    return render(request, 'myapp/Health_Savings.html')
+
 def cash_mgmt(request):
     return render(request, 'myapp/Cash_Management.html')
 

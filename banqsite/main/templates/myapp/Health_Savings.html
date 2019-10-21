@@ -1,0 +1,49 @@
+{% extends 'myapp/header_footer.html' %}
+      
+
+{% block content %}
+   {% load static %}
+   <link href="{% static 'stylesheets/HeSave_style.css' %}" rel='stylesheet'>
+  
+
+  <div class="col-xs-12" style="padding: 2%;">
+        <h1>Health Savings Account</h1>
+        <p style="color: black;">NVB Health Savings Accounts allow employers to make tax-free contributions to employee health insurance plans. Employees may also fund these accounts through pre-tax payroll deductions.</p>
+      </div>
+      
+      <br/>
+      
+      <div class="col-xs-12" style="padding: 2%;">
+          <h1>Features</h1>
+          <ul style="color: black;">
+              <li>Low Interest</li>
+              <li>No minimum balance</li>
+              <li>No monthly fees</li>
+          </ul>
+      </div>
+      
+      <br/>
+      
+      <div class="col-xs-12" style="padding: 2%;">
+          <h1>Employee Perks</h1>
+          <ul style="color: black;">
+              <li>Debit Card</li>
+              <li>Online Banking</li>
+              <li>Mobile Banking</li>
+              
+          </ul>
+      </div>
+      
+      <br/>
+      
+      <div class="col-xs-12" style="padding: 2%;">
+              <h1>What You Need to Know</h1>
+              <p style="color: black;">Employee must participate in a high-deductible health plan (HDHP)
+                    Cannot have additional health insurance coverage through a non-HDHP
+                    Cannot be enrolled in Medicare or receiving VA Benefits
+                    Cannot be claimed as a dependent on another person’s tax return</p>
+            </div>
+
+
+
+{% endblock %}
