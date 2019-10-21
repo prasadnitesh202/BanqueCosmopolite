@@ -16,7 +16,7 @@ from .helperfunctions import *
 # Create your views here.
 x=0
 
-account = 0
+account ='Account'
 def home(request):
     return render(request, 'myapp/home.html')
 
@@ -88,7 +88,7 @@ def webhook(request):
         end_date = parameters.get('date-period').get('endDate')
         d1 = datefield_parse(start_date)
         d2 = datefield_parse(end_date)
-        sender=Transaction.objects.filter(paid_from__acc_no=x).filter(date_time__date__range=[d1, d2])
+        sender=Transaction.objects.filter(paid_from__acc_no=account).filter(date_time__date__range=[d1, d2])
         print(sender)
         text=''
         if sender.count()==0:
@@ -110,100 +110,134 @@ def webhook(request):
 
         # fulfillmentText = {'fulfillmentText': 'You are looking for expenditure\ between'+str(start_date)+' and'+str(end_date)}
     elif action == 'debitcard-expiry':
-        print(x)
-        a=Card.objects.filter(acc_no__acc_no=x).filter(card_type='D')
-        print(a)
-        c=a.count()
-        if(c==0):
-            fulfillmentText={'fulfillmentText':'You dont have any debit card linked to your account'}
+        if(account=='Account'):
+            fulfillmentText={'fulfillmentText':'Please select account number from dropdown to the left'}
         else:
-            fulfillmentText={'fulfillmentText':'Your debit card expires on '+str(a[0].valid_thru)}
+
+            print(x)
+            a=Card.objects.filter(acc_no__acc_no=account).filter(card_type='D')
+            print(a)
+            c=a.count()
+            if(c==0):
+                fulfillmentText={'fulfillmentText':'You dont have any debit card linked to your account,You can choose another account from dropdown to the left and try again'}
+            else:
+                fulfillmentText={'fulfillmentText':'Your debit card expires on '+str(a[0].valid_thru)}
 
     elif action == 'creditcard-expiry':
         print(x)
-        a=Card.objects.filter(acc_no__acc_no=x).filter(card_type='C')
-        print(a)
-        c=a.count()
-        if(c==0):
-            fulfillmentText={'fulfillmentText':'You dont have any credit card linked to your account'}
+        if(account=='Account'):
+            fulfillmentText={'fulfillmentText':'Please select account number from dropdown to the left'}
         else:
-            fulfillmentText={'fulfillmentText':'Your credit card expires on '+str(a[0].valid_thru)}
-    
+
+            a=Card.objects.filter(acc_no__acc_no=account).filter(card_type='C')
+            print(a)
+            c=a.count()
+            if(c==0):
+                fulfillmentText={'fulfillmentText':'You dont have any credit card linked to your account.You can change the acount number from dropdown to the left and try again'}
+            else:
+                fulfillmentText={'fulfillmentText':'Your credit card expires on '+str(a[0].valid_thru)}
+        
     elif action == 'expenditure-date':
-        start_date=parameters.get('date')
-        print(start_date)
-        d1 = datefield_parse(start_date)
-        d2=d1+timedelta(days=1)
-        print(d1)
-        print(d2)
-        sender=Transaction.objects.filter(paid_from__acc_no=x).filter(date_time__date__range=[d1, d1])
-        print(sender)
-        text=''
-        if sender.count()==0:
-            print('0')
-            text='No transactions done on '+str(d1)
+        if(account=='Account'):
+            text='Please select account number from dropdown to the left'
         else:
-            c=0
-            sum=0
-            for i in sender:
-                text=text+str(c)+'.): '+str(i.amount)+' paid to '+str(i.paid_to)+'   '
-                c=c+1
-                print(text)
-                sum=sum+i.amount
-            text=text+', So total amount debited= '+str(sum)
+
+            start_date=parameters.get('date')
+            print(start_date)
+            d1 = datefield_parse(start_date)
+            d2=d1+timedelta(days=1)
+            print(d1)
+            print(d2)
+            sender=Transaction.objects.filter(paid_from__acc_no=x).filter(date_time__date__range=[d1, d1])
+            print(sender)
+            text=''
+            if sender.count()==0:
+                print('0')
+                text='No transactions done on '+str(d1)+' You can change the account number from dropdown to the left and try again'
+            else:
+                c=0
+                sum=0
+                for i in sender:
+                    text=text+str(c)+'.): '+str(i.amount)+' paid to '+str(i.paid_to)+'   '
+                    c=c+1
+                    print(text)
+                    sum=sum+i.amount
+                text=text+', So total amount debited= '+str(sum)
         fulfillmentText={'fulfillmentText':text}
-    
+        
     elif action == 'emi_status':
-        a=Loan.objects.filter(acc_no__acc_no=x)
-        text=''
-        if(a.count()==0):
-            text=text+' No emi due'
+        # print('accnt nus ishefjndf'+str(account))
+        if account=='Account':
+            text='Please select account number from dropdown to the left'
+            print(text)
         else:
-            text=text+'You have a total of '+str(a.count())+' loans'
-            c=1
-            for i in a:
-                ip=i.installments_paid
-                amount=i.amount
-                amount_paid=i.amount_paid
-                amt_due=amount-amount_paid
-                il=i.num_installments-ip
-                emi=(amt_due//il)+((il*i.interest)//100)
-                text=text+str(c)+') emi-due:  '+str(emi)+'  '
-                c=c+1
+            # print('yo accnt nhmber is'+str(account))
+            a=Loan.objects.filter(acc_no__acc_no=account)
+            text=''
+            print("account number is"+str(account))
+            if(a.count()==0):
+                text=text+' No emi due in this account.You can change the account number from dropdown to the left and try again.'
+            else:
+                text=text+'You have a total of '+str(a.count())+' loans'
+                c=1
+                for i in a:
+                    ip=i.installments_paid
+                    amount=i.amount
+                    amount_paid=i.amount_paid
+                    amt_due=amount-amount_paid
+                    il=i.num_installments-ip
+                    emi=(amt_due//il)+((il*i.interest)//100)
+                    text=text+str(c)+') emi-due:  '+str(emi)+'  '
+                    c=c+1
         fulfillmentText={'fulfillmentText':text}
 
     elif action=='transaction-creditcard-period':
-        start_date = parameters.get('date-period').get('startDate')
-        end_date = parameters.get('date-period').get('endDate')
-        d1 = datefield_parse(start_date)
-        d2 = datefield_parse(end_date)
-        sender=Transaction.objects.filter(paid_from__acc_no=x).filter(txn_type='A').filter(date_time__date__range=[d1, d2])
-        print(sender)
-        text=''
-        if(sender.count()==0):
-            text=text+' no transactions from credit card during this time'
+
+        if account=='Account':
+            text='Please select account number from dropdown to the left'
         else:
-            for i in sender:
-                text=text+str(c)+'.): '+str(i.amount)+' paid to '+str(i.paid_to)+'   '
-                c=c+1
-                print(text)
-                sum=sum+i.amount
-            text=text+', So total amount debited from credit card= '+str(sum)
+
+            start_date = parameters.get('date-period').get('startDate')
+            end_date = parameters.get('date-period').get('endDate')
+            d1 = datefield_parse(start_date)
+            d2 = datefield_parse(end_date)
+            sender=Transaction.objects.filter(paid_from__acc_no=account).filter(txn_type='A').filter(date_time__date__range=[d1, d2])
+            print(sender)
+            text=''
+            if(sender.count()==0):
+                text=text+' no transactions from credit card during this time.You can change the account number from dropdown to the left and try again'
+            else:
+                c=0
+                sum=0
+                for i in sender:
+                    text=text+str(c)+'.): '+str(i.amount)+' paid to '+str(i.paid_to)+'   '
+                    c=c+1
+                    print(text)
+                    sum=sum+i.amount
+                text=text+', So total amount debited from credit card= '+str(sum)
         fulfillmentText={'fulfillmentText':text}
         
     elif action=='transaction-debitcard-period':
-        start_date = parameters.get('date-period').get('startDate')
-        end_date = parameters.get('date-period').get('endDate')
-        d1 = datefield_parse(start_date)
-        d2 = datefield_parse(end_date)
-        sender=Transaction.objects.filter(paid_from__acc_no=x).filter(txn_type='B').filter(date_time__date__range=[d1, d2])
-        print(sender)
-        for i in sender:
-            text=text+str(c)+'.): '+str(i.amount)+' paid to '+str(i.paid_to)+'   '
-            c=c+1
-            print(text)
-            sum=sum+i.amount
-        text=text+', So total amount debited from debit card= '+str(sum)
+        if account=='Account':
+            text='Please select account number from dropdown to the left'
+        else:
+
+            start_date = parameters.get('date-period').get('startDate')
+            end_date = parameters.get('date-period').get('endDate')
+            d1 = datefield_parse(start_date)
+            d2 = datefield_parse(end_date)
+            sender=Transaction.objects.filter(paid_from__acc_no=account).filter(txn_type='B').filter(date_time__date__range=[d1, d2])
+            print(sender)
+            if(sender.count()==0):
+                text='No transaction done from this debit card during this time.You can change the account number from the dropdown to the left and try again'
+            else:
+
+                for i in sender:
+                    text=text+str(c)+'.): '+str(i.amount)+' paid to '+str(i.paid_to)+'   '
+                    c=c+1
+                    print(text)
+                    sum=sum+i.amount
+                text=text+', So total amount debited from debit card= '+str(sum)
         fulfillmentText={'fulfillmentText':text}
 
     
