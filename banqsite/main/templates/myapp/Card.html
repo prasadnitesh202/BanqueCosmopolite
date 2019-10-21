@@ -1,0 +1,172 @@
+
+{% extends 'myapp/header_footer.html' %}
+      
+
+{% block content %}
+   {% load static %}
+   <link href="{% static 'stylesheets/Card_style.css' %}" rel='stylesheet'>
+
+<br/>
+
+<!--Seletion Buttons-->
+
+<div style="padding: 0% 0% 0% 1%;" class="btn-group">
+        <h5 style="margin-top: 2%;">Select Account :</h5>
+        <p style="color: rgba(0,0,0,0);">.</p>
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Account
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Account 1</a>
+      <a class="dropdown-item" href="#">Account 2</a>
+    </div>
+  </div>
+
+  <br/>
+  <br/>
+
+
+  <div style="padding: 0% 0% 0% 1%;"  class="btn-group">
+        <h5 style="margin-top: 2%;">Select Card :</h5>
+        <p style="color: rgba(0,0,0,0);">........</p>
+        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Card
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#" id="cardbtn1" onclick="showCard1()">Card 1</a>
+          <a class="dropdown-item" href="#" id="cardbtn2" onclick="showCard2()">Card 2</a>
+        </div>
+      </div>
+
+
+      <br/>
+
+    <img id="Card1" src='{% static "img/card2.png" %}' style="width: 30%;height:20%; padding: 2%; display: none;">
+    <img id="Card2" src='{% static "img/card4.png" %}' style="width: 30%;height:20%; padding: 2%; display: none;">
+
+    <br/>
+
+<!--Transaction Table-->
+
+<div id="Table1" class="container-fluid" style="background-color: white; display: none;">
+        <table class="table table-bordered table-hover table-responsive-xs">
+          <thead class="thead-dark">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Amount</th>
+              <th scope="col">Type</th>
+            <th scope="col">Mode</th>
+            <th scope="col">Date</th>
+              <th scope="col">Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>5000</td>
+              <td>Deposit</td>
+            <td>Cash</td>
+            <td>06-10-2019</td>
+            <td>01:00 PM</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>1234</td>
+              <td>Withdrawal</td>
+            <td>Debit Card</td>
+            <td>05-10-2019</td>
+            <td>04:00 PM</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>65575</td>
+              <td>Withdrawal</td>
+            <td>Challan</td>
+            <td>06-10-2019</td>
+            <td>11:00 AM</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+
+    <div id="Table2" class="container-fluid" style="background-color: white; display: none;">
+        <table class="table table-bordered table-hover table-responsive-xs">
+          <thead class="thead-dark">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Amount</th>
+              <th scope="col">Type</th>
+            <th scope="col">Mode</th>
+            <th scope="col">Date</th>
+              <th scope="col">Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>50000</td>
+              <td>Deposit</td>
+            <td>Cash</td>
+            <td>06-10-2019</td>
+            <td>01:00 PM</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>12340</td>
+              <td>Withdrawal</td>
+            <td>Debit Card</td>
+            <td>05-10-2019</td>
+            <td>04:00 PM</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>655750</td>
+              <td>Withdrawal</td>
+            <td>Challan</td>
+            <td>06-10-2019</td>
+            <td>11:00 AM</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+
+<script>
+    function showCard1() {
+      var x = document.getElementById("Card1");
+      var y = document.getElementById("Card2");
+      var t1 = document.getElementById("Table1");
+      var t2 = document.getElementById("Table2");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "none";
+        t1.style.display = "block";
+        t2.style.display = "none";
+      } else {
+        x.style.display = "none";
+        t1.style.display = "none";
+      }
+    }
+    </script>
+   
+   
+   <script>
+     function showCard2() {
+      var x = document.getElementById("Card2");
+      var y = document.getElementById("Card1");
+      var t1 = document.getElementById("Table2");
+      var t2 = document.getElementById("Table1");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "none";
+        t1.style.display = "block";
+        t2.style.display = "none";
+      } else {
+        x.style.display = "none";
+        t1.style.display = "none";
+      }
+    }
+      </script>
+
+{% endblock %}
