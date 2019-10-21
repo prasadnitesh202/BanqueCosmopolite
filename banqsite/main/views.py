@@ -59,6 +59,8 @@ def login_req(request):
                     context={"form":form})
 
 def logout_request(request):
+    global account
+    account='Account'
     logout(request)
     return redirect("main:home")
 
@@ -166,7 +168,7 @@ def webhook(request):
         fulfillmentText={'fulfillmentText':text}
         
     elif action == 'emi_status':
-        # print('accnt nus ishefjndf'+str(account))
+        print('accnt nus ishefjndf'+str(account))
         if account=='Account':
             text='Please select account number from dropdown to the left'
             print(text)
