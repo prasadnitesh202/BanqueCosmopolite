@@ -23,55 +23,48 @@
 
       <!--Navbar-->  
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
-    <a class="navbar-brand" href="#" style="font-size: 180%">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <a class="navbar-brand" href="/" style="font-size: 180%">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Personal
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/">Prepaid</a>
+          <a class="dropdown-item" href="/">Savings</a>
+          <a class="dropdown-item" href="/">Health Savings</a>
+        </div>
+      </li>
+
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Personal
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Business
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/checking">Checking</a>
+          <a class="dropdown-item" href="/cash_mgmt">Cash Management</a>
+          <a class="dropdown-item" href="/monket">Money Market</a>
+        </div>
+      </li>
+       
+        <li class="nav-item active">
+          <a class="nav-link" href="/#Services">Services</a>
         </li>
-          <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Business
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Accounts</a>
-            <a class="dropdown-item" href="#">Tools</a>
-            <a class="dropdown-item" href="#">Online</a>
-          </div>
-        </li>
-          <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Invest
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Business Services</a>
-            <a class="dropdown-item" href="#">Banking Services</a>
-            <a class="dropdown-item" href="#">Business Centres</a>
-          </div>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#Services">Services</a>
-          </li>
-          <li class="nav-item active">
-          <a class="nav-link" href="#About">About</a>
-        </li>
-          
-          <li class="nav-item active">
-          <a class="nav-link" href="#Contact">Contact Us</a>
-        </li>
-      </ul>
+        <li class="nav-item active">
+        <a class="nav-link" href="/#About">About</a>
+      </li>
+        
+        <li class="nav-item active">
+        <a class="nav-link" href="#Contact">Contact Us</a>
+      </li>
+    </ul>
+
     
       
         {% if user.is_authenticated %}

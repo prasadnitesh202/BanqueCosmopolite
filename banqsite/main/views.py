@@ -36,6 +36,17 @@ def chatbot(request):
 def account(request):
     return render(request, 'myapp/account.html')
 
+def atmf(request):
+    return render(request, 'myapp/ATM.html')
+
+def monket(request):
+    return render(request, 'myapp/Money_market.html')
+
+def checkin(request):
+    return render(request, 'myapp/Checking.html')
+
+def cash_mgmt(request):
+    return render(request, 'myapp/Cash_Management.html')
 
 def login_req(request):
     if request.method == 'POST':
@@ -59,6 +70,8 @@ def login_req(request):
                     context={"form":form})
 
 def logout_request(request):
+    global account
+    account = 'Account'
     logout(request)
     return redirect("main:home")
 

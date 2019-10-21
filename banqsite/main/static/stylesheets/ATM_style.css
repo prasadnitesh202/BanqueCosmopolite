@@ -1,0 +1,151 @@
+
+body
+{
+    background: no-repeat;
+    font-family: Arial;
+    color:cornflowerblue
+}
+
+.dropdown-item:hover
+{
+    background-color: lightgray;
+}
+
+/*Footer*/
+
+footer h4{
+    color: white;
+    padding: 1% 1% 1% 1%;
+}
+
+#Contact{
+    font-family: Arial;
+    background-color: rgb(40, 44, 58);
+    margin-top: 10%;
+}
+  
+  @media screen and (min-width: 720px) {
+    .fa {
+        padding: 1%;
+      font-size: 5%;
+      width: 4%;
+      text-align: center;
+      text-decoration: none;
+      /*border-radius: 50%;*/
+      }
+      
+      /* Add a hover effect if you want */
+      .fa:hover {
+        opacity: 0.7;
+      }
+      
+      /* Set a specific color for each brand */
+      
+      /* Facebook */
+      .fa-facebook {
+        background: #3B5998;
+        color: white;
+      }
+      
+      /* Twitter */
+      .fa-twitter {
+        background: #55ACEE;
+        color: white;
+      }
+  }
+
+  /*Footer-End*/
+ /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        /* background-color:cornsilk */
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        padding: 0
+      }
+      table {
+        font-size: 12px;
+      }
+      /*
+      .atm-search {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        background:rgba(158, 158, 158, 0);
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 440px;
+        z-index: 1;
+      }
+      */
+      
+      #map {
+        margin-top: 40px;
+        margin-bottom: 5%;
+        margin-right: 2%;
+        margin-left: 2%;
+        width: 75%;
+        height: 85%;
+      }
+      #listing {
+        position: absolute;
+        width: 21%;
+        height: 85%;
+        overflow: auto;
+        left: 77%;
+        top: 187px;
+        cursor: pointer;
+        overflow-x: hidden;
+        float:right;
+      }
+      #findatm {
+        font-size: 200%;
+        margin: 1% 1% 1% 5%;
+        background-color: rgba(255,255,255,0);
+      }
+       
+       #locationField {
+        width: 20%;
+      }
+       
+      #autocomplete {
+        width: 100%;
+      }
+      .placeIcon {
+        width: 20px;
+        height: 34px;
+        margin: 4px;
+      }
+      .atmIcon {
+        width: 24px;
+        height: 24px;
+      }
+      #resultsTable {
+        border-collapse: collapse;
+        width: 240px;
+      }
+      #rating {
+        font-size: 13px;
+        font-family: Arial Unicode MS;
+      }
+      .iw_table_row {
+        height: 18px;
+      }
+      .iw_attribute_name {
+        font-weight: bold;
+        text-align: right;
+      }
+      .iw_table_icon {
+        text-align: right;
+      }

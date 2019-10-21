@@ -12,6 +12,10 @@ urlpatterns = [
     path('logout/', views.logout_request, name='logout'),
     path('webhook/', views.webhook, name='webhook'),
     path('ajax/', views.ajax, name='ajax'),
+    path('atm_finder/', views.atmf, name='atm_finder'),
+    path('checking/', views.checkin,name='checking'),
+    path('cash_mgmt/', views.cash_mgmt,name='cash_mgmt'),
+    path('monket/', views.monket,name='monket'),
     
 
 ]

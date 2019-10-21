@@ -1,0 +1,41 @@
+{% extends 'myapp/header_footer.html' %}
+{% block content %}
+   {% load static %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <link href="{% static 'stylesheets/Cash_mgmt_style.css' %}" rel='stylesheet'>
+     
+<br/>
+
+<div class="col-xs-12" style="padding: 2%;">
+  <h1>Cash Management</h1>
+  <p style="color: black;">The NVB Care-free prepaid card account offers the simplicity of a prepaid card with the benefits of a banking relationship. There is no activation fee or balance requirements—and there are no overdraft fees. It really is a care-free solution.</p>
+</div>
+
+<br/>
+
+<div class="col-xs-12" style="padding: 2%;">
+    <h1>Advantages</h1>
+    <ul style="color: black;">
+        <li>No overdraft fees</li>
+        <li>Online Statements</li>
+        <li>Online and Mobile Access</li>
+        <li>Online Bill Pay</li>
+        <li>FDIC Insured</li>
+    </ul>
+</div>
+
+<br/>
+
+<div class="col-xs-12" style="padding: 2%;">
+    <h1>Use It</h1>
+    <ul style="color: black;">
+        <li>Make Purchases Online</li>
+        <li>Get cash back at any ATM</li>
+        <li>Schedule Online Payment</li>
+        <li>FDIC Insured</li>
+    </ul>
+</div>
+
+<br/>
+{% endblock %}
