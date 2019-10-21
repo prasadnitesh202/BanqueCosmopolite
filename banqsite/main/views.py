@@ -16,13 +16,17 @@ from .helperfunctions import *
 # Create your views here.
 x=0
 
-
+account = 0
 def home(request):
     return render(request, 'myapp/home.html')
 
 @login_required(login_url='/login/')
 def chatbot(request):
-    return render(request, 'myapp/Chatbot.html')
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+    accounts = Account.objects.filter(user_id__user__username=username)
+    return render(request, 'myapp/Chatbot.html', {'accounts': accounts})
 
 
 # def login(request):
@@ -220,3 +224,15 @@ def webhook(request):
         
     
     return JsonResponse(fulfillmentText, safe=False)
+
+@csrf_exempt
+def ajax(request):
+    acc = request.POST.get('keyname', None)
+    # build a request object
+    global account
+    account = acc
+    print(account)
+    data ={}
+    if(account):
+        data['is_success'] = 'Account changed'
+    return JsonResponse(data)
