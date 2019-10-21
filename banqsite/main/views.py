@@ -110,25 +110,29 @@ def webhook(request):
     elif action == 'lastlogin':
         fulfillmentText = {'fulfillmentText': 'Last login details to be\n fetched from backend later'}
     elif action == 'expense-dateperiod':
-        start_date = parameters.get('date-period').get('startDate')
-        end_date = parameters.get('date-period').get('endDate')
-        d1 = datefield_parse(start_date)
-        d2 = datefield_parse(end_date)
-        sender=Transaction.objects.filter(paid_from__acc_no=account).filter(date_time__date__range=[d1, d2])
-        print(sender)
-        text=''
-        if sender.count()==0:
-            print('0')
-            text='No transactions done between '+str(d1)+' and '+str(d2)
+        if(account=='Account'):
+            text='Please select account number from dropdown to the left'
         else:
-            c=0
-            sum=0
-            for i in sender:
-                text=text+str(c)+'.): '+str(i.amount)+' paid to '+str(i.paid_to)+'   '
-                c=c+1
-                print(text)
-                sum=sum+i.amount
-            text=text+', So total amount debited= '+str(sum)
+
+            start_date = parameters.get('date-period').get('startDate')
+            end_date = parameters.get('date-period').get('endDate')
+            d1 = datefield_parse(start_date)
+            d2 = datefield_parse(end_date)
+            sender=Transaction.objects.filter(paid_from__acc_no=account).filter(date_time__date__range=[d1, d2])
+            print(sender)
+            text=''
+            if sender.count()==0:
+                print('0')
+                text='No transactions done between '+str(d1)+' and '+str(d2)
+            else:
+                c=0
+                sum=0
+                for i in sender:
+                    text=text+str(c)+'.): '+str(i.amount)+' paid to '+str(i.paid_to)+'   '
+                    c=c+1
+                    print(text)
+                    sum=sum+i.amount
+                text=text+', So total amount debited= '+str(sum)
         fulfillmentText={'fulfillmentText':text}
        
 
