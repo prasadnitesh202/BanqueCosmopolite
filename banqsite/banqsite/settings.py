@@ -28,9 +28,13 @@ DEBUG = True
 ALLOWED_HOSTS = ['08a62537.ngrok.io',
                  'localhost',
                  '68faf366.ngrok.io',
+<<<<<<< HEAD
                  '44090d9c.ngrok.io',
                  'aa2dd446.ngrok.io',
 ]
+=======
+                 '44090d9c.ngrok.io', ]
+>>>>>>> bc1954d4a355de2da6755c559008182f2656ed69
 
 
 # Application definition

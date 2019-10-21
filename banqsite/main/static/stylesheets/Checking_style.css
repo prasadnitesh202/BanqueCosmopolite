@@ -1,6 +1,6 @@
 body
 {
-    background: url('../img/bg.jpg') no-repeat;
+    background: no-repeat;
     font-family: Arial;
     color:cornflowerblue
 }
@@ -75,3 +75,4 @@ footer h4{
       display: none;
     }
   }
+    
