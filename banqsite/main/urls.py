@@ -20,6 +20,7 @@ urlpatterns = [
     path('prepaid/', views.prepaid, name='prepaid'),
     path('savings/', views.savings, name='savings'),
     path('transaction/', views.transaction, name='transaction'),
+    path('cards/', views.cards, name='cards')
 
     
 

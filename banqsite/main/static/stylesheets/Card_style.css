@@ -1,0 +1,57 @@
+body
+{
+    background-color: white; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to bottom right, rgb(0, 132, 255), rgb(0, 255, 170)); /* Standard syntax (must be last) */
+    font-family: Arial;
+    color:white;
+}
+
+.dropdown-item:hover
+{
+    background-color: lightgray;
+}
+
+
+/*Footer*/
+
+footer h4{
+    color: white;
+    padding: 1% 1% 1% 1%;
+}
+
+#Contact{
+    background-color: rgb(40, 44, 58);
+    margin-top: 10%;
+}
+  
+  @media screen and (min-width: 720px) {
+    .fa {
+        padding: 1%;
+      font-size: 5%;
+      width: 4%;
+      text-align: center;
+      text-decoration: none;
+      /*border-radius: 50%;*/
+      }
+      
+      /* Add a hover effect if you want */
+      .fa:hover {
+        opacity: 0.7;
+      }
+      
+      /* Set a specific color for each brand */
+      
+      /* Facebook */
+      .fa-facebook {
+        background: #3B5998;
+        color: white;
+      }
+      
+      /* Twitter */
+      .fa-twitter {
+        background: #55ACEE;
+        color: white;
+      }
+  }
+
+  /*Footer-End*/
