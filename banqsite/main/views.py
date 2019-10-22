@@ -45,15 +45,31 @@ def monket(request):
 def checkin(request):
     return render(request, 'myapp/Checking.html')
 
+@login_required(login_url='/login/')
+def payment(request):
+    return render(request, 'myapp/Payment.html')
+
+
 def savings(request):
     return render(request, 'myapp/Savings.html')
+
+def mission(request):
+    return render(request, 'myapp/Mission.html')
+
+def team(request):
+    return render(request, 'myapp/Our_Team.html')
+
+def history(request):
+    return render(request, 'myapp/History.html')
 
 def prepaid(request):
     return render(request, 'myapp/Prepaid.html')
 
+@login_required(login_url='/login/')
 def transaction(request):
     return render(request, 'myapp/Transaction.html')
 
+@login_required(login_url='/login/')
 def cards(request):
     return render(request, 'myapp/Card.html')
 
@@ -293,7 +309,7 @@ def webhook(request):
     return JsonResponse(fulfillmentText, safe=False)
 
 @csrf_exempt
-def ajax(request):
+def chatbot_ajax(request):
     acc = request.POST.get('keyname', None)
     # build a request object
     global account

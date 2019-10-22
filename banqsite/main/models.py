@@ -169,19 +169,11 @@ class Loan(models.Model):
 
 
 class Transaction(models.Model):
-    txn_types = (
-        ('A', 'Paid by Credit Card'),
-        ('B', 'Paid by Debit Card'),
-        ('C', 'Cash Transfer'),
-        )
+    txn_types = ( ('A', 'Paid by Credit Card'), ('B', 'Paid by Debit Card'), ('C', 'Cash Transfer'))
     transaction_id = models.AutoField(primary_key=True)
     date_time = models.DateTimeField(default=datetime.now())
-    paid_from = models.ForeignKey(
-        Account, on_delete=models.CASCADE, related_name='paid_from'
-        )
-    paid_to = models.ForeignKey(
-        Account, on_delete=models.CASCADE, related_name='paid_to'
-        )
+    paid_from = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='paid_from')
+    paid_to = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='paid_to')
     amount = models.BigIntegerField()
     txn_type = models.CharField(max_length=1, choices=txn_types)
     about_txn = models.TextField()

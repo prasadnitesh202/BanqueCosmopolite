@@ -1,6 +1,6 @@
 body
 {
-    background: url('../img/bg.jpg') no-repeat;
+    background: url('../img/bg.jpg') repeat;
     font-family: Arial;
     color:cornflowerblue
 }
@@ -57,3 +57,10 @@ footer h4{
   }
 
   /*Footer-End*/
+.bg-dark {
+    background-color: #162e3e!important;
+}
+
+#Contact{
+    background-color: #162e3e!important;
+}

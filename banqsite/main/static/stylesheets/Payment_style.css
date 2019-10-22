@@ -6,7 +6,6 @@ body
     color:white;
 }
 
-
 .dropdown-item:hover
 {
     background-color: lightgray;
@@ -22,8 +21,7 @@ footer h4{
 
 #Contact{
     background-color: rgb(40, 44, 58);
-	    margin-top: 10%;
-
+    margin-top: 10%;
 }
   
   @media screen and (min-width: 720px) {

@@ -1,0 +1,90 @@
+{% extends 'myapp/header_footer.html' %}
+{% block content %}
+   {% load static %}
+<link href="{% static 'stylesheets/Payment_style.css' %}" rel='stylesheet'>
+<br/>
+
+<!--Seletion Buttons-->
+
+<div style="padding: 0% 0% 0% 1%;" class="btn-group">
+        <h5 style="margin-top: 2%;">Select Account :</h5>
+        <p style="color: rgba(0,0,0,0);">.</p>
+    <button type="button" id="accountbtn" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Account
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#" onclick="myFunction1()">Account 1</a>
+      <a class="dropdown-item" href="#" onclick="myFunction2()">Account 2</a>
+    </div>
+  </div>
+
+  <br/>
+  <br/>
+
+  <div style="padding: 0% 0% 0% 1%;" class="btn-group">
+    <h5 style="margin-top: 2%;">Pay To :</h5>
+    <p style="color: rgba(0,0,0,0);">.</p>
+        <div class="form-group">
+           <input type="text" class="form-control" id="Receiver">       
+        </div>
+</div>
+
+<br/>
+<br/>
+
+
+<div style="padding: 0% 0% 0% 1%;" class="btn-group">
+    <h5 style="margin-top: 2%;">Amount :</h5>
+    <p style="color: rgba(0,0,0,0);">.</p>
+        <div class="form-group">
+           <input type="text" class="form-control" id="Amount">       
+        </div>
+</div>
+
+<br/>
+<br/>
+
+
+  <div style="padding: 0% 0% 0% 1%;" class="btn-group">
+    <h5 style="margin-top: 2%;">Password :</h5>
+    <p style="color: rgba(0,0,0,0);">.</p>
+    <div class="form-group">
+        <input type="password" class="form-control" value="Password" id="pswd">       
+     </div>
+    <br/>   
+
+</div>
+<input type="checkbox" onclick="togglePassword()">Show Password
+
+    <br/>
+    <br/>
+
+
+    <button type="button" class="btn btn-warning" style="margin-left: 2%;">Pay</button>
+
+
+
+<script>
+function togglePassword() {
+  var x = document.getElementById("pswd");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+function myFunction1()
+{
+  document.getElementById("accountbtn").innerHTML="Account 1";
+};
+
+function myFunction2()
+{
+  document.getElementById("accountbtn").innerHTML="Account 2";
+};
+
+
+</script>
+
+{% endblock %}}

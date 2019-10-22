@@ -1,8 +1,9 @@
 body
 {
-    background: url('../img/bg.jpg') no-repeat;
+    background-color: white; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to bottom right, rgb(0, 132, 255), rgb(0, 255, 170)); /* Standard syntax (must be last) */
     font-family: Arial;
-    color:cornflowerblue
+    color:white;
 }
 
 .dropdown-item:hover
@@ -20,8 +21,6 @@ footer h4{
 
 
 /* Bordered form */
-
-  
   /* Full-width inputs */
   input[type=text], input[type=password] {
     width: 100%;
@@ -40,7 +39,7 @@ footer h4{
     margin: 2% 2%;
     border: none;
     cursor: pointer;
-    width: 20%;
+    width: 25%;
   }
   
   /* Add a hover effect for buttons */
@@ -188,3 +187,31 @@ footer h4{
 }
 
 /*Footer-End*/
+
+@media screen and (max-width : 540px){
+  #Login-btn button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 2% 2%;
+    margin: 2% 2%;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+  }
+}
+
+@media screen and (max-width : 500px){
+  #Login-btn button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 2% 2%;
+    margin: 2% 2%;
+    border: none;
+    cursor: pointer;
+    width: 60%;
+  }
+
+  #Login-button{
+    width:50%;
+  }
+}
