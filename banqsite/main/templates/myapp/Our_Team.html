@@ -1,0 +1,62 @@
+{% extends 'myapp/header_footer.html' %}
+      
+
+{% block content %}
+   {% load static %}
+   <link href="{% static 'stylesheets/Team_style.css' %}" rel='stylesheet'>
+
+  <!--Info-->
+<div class="container-fluid" style="background-color: rgb(35, 50, 77);">
+  <div class="row">
+      <div class="col-md-4">  
+      <img src='{% static "img/account.jpg" %}' style="width: 90%; height: 90%; padding:10% 2% 0% 2%;">
+  </div>
+  <div class="col-md-4" >
+
+    <h3 style="padding:15% 2% 0% 2%;">Name: abc</h3>
+    
+    <h3  style="padding:15% 2% 0% 2%;">email:abc@email.com</h3>
+</div>
+</div>
+</div>
+
+<br/>
+<br/>
+<!--Info-->
+<div class="container-fluid" style="background-color: rgb(35, 50, 77);">
+  <div class="row">
+      <div class="col-md-4">  
+      <img src='{% static "img/account.jpg" %}' style="width: 90%; height: 90%; padding:10% 2% 0% 2%;">
+  </div>
+      <div class="col-md-4" >
+
+      <h3 style="padding:15% 2% 0% 2%;">Name: jkl</h3>
+      
+      <h3  style="padding:15% 2% 0% 2%;">email:jkl@email.com</h3>
+  </div>
+  
+</div>
+</div>
+
+<br/>
+<br/>
+<!--Info-->
+<div class="container-fluid" style="background-color: rgb(35, 50, 77);">
+  <div class="row">
+      <div class="col-md-4">  
+      <img src='{% static "img/account.jpg" %}' style="width: 90%; height: 90%; padding:10% 2% 0% 2%;">
+  </div>
+  <div class="col-md-4" >
+
+    <h3 style="padding:15% 2% 0% 2%;">Name: def</h3>
+    
+    <h3  style="padding:15% 2% 0% 2%;">email:def@email.com</h3>
+</div>
+</div>
+</div>
+
+<br/>
+<br/>
+
+
+{% endblock %}

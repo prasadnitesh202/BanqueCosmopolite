@@ -69,7 +69,10 @@
       
         {% if user.is_authenticated %}
         <form class="form-inline my-2 my-lg-0">
-        <a class="navbar-brand" href="/account" style="font-size: 140%">Welcome {{ user.first_name }}</a>
+          <a href="/account" class="btn btn-outline-primary my-2 my-sm-0" type="submit">My Account</a>
+        <a class="navbar-brand" href="/account" style="font-size: 140%">         </a>
+        
+
         <a href="/logout" class="btn btn-outline-danger mr-sm-2" type="submit">Logout</a>
       </form>
         {% else %}
@@ -98,7 +101,7 @@
         <span class="col-md-3">help@bank.com</span>
         <br>
         <br>
-        <span class="col-md-3" style="color: gray;">Find us on:</span>
+        <span class="col-lg-3" style="color: gray;">Find us on:</span>
         <a href="https://www.facebook.com/login/" class="fa fa-facebook"></a>
         <a href="https://twitter.com/login?lang=en" class="fa fa-twitter"></a>
         <br>

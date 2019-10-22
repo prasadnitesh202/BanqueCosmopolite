@@ -2,12 +2,13 @@
 {% block content %}
    {% load static %}
   <!--Jumbotron-->
-  <div class="jumbotron" style="background: none;">
+  <link href="{% static 'stylesheets/Bank_style.css' %}" rel='stylesheet'>
+   <div class="jumbotron" style="background: none;">
     <h1 class="display-4" style="color: white; width: 60%">150 Years of Banking</h1>
     <p class="lead" style="width: 45%">A bank with family values! The family has
     been at the helm of the Bank since the doors opened in 1868.
     </p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    <a class="btn btn-primary btn-lg" href="/history" role="button">Learn more</a>
     <br>
     <br>
     
@@ -27,11 +28,11 @@
 
       <div class="col-md-4">  
           <div class="card" style="margin: auto">
-            <img src='{% static "img/maps2.jpg" %}' class="card-img-top" alt="...">
+            <img src='{% static "img/payment.jpg" %}' class="card-img-top" alt="...">
             <div class="card-body">
-              <h4 class="card-title">Branch Locator</h4>
-              <p class="card-text">Locate the Branch Nearest to You.</p>
-              <a href="#" class="btn btn-primary">Locate</a>
+              <h4 class="card-title">Make a Transaction</h4>
+              <p class="card-text">Send money, Pay Bills.</p>
+              <a href="/payment" class="btn btn-primary">Pay</a>
             </div>
           </div>
           <div class="col-xs"><br></div>
@@ -131,7 +132,7 @@
       <div class="card-body">
         <h4 class="card-title">Mission</h4>
         <p class="card-text">We started off to help you.</p>
-        <a href="#" class="btn btn-primary">Read More</a>
+        <a href="/mission" class="btn btn-primary">Read More</a>
       </div>
     </div>
     <div class="col-xs"><br></div>
@@ -144,7 +145,7 @@
       <div class="card-body">
         <h4 class="card-title">History</h4>
         <p class="card-text">We are here since 1868 to help you.</p>
-        <a href="#" class="btn btn-primary">Know More</a>
+        <a href="/history" class="btn btn-primary">Know More</a>
       </div>
     </div>
     <div class="col-xs"><br></div>
@@ -156,7 +157,7 @@
       <div class="card-body">
         <h4 class="card-title">Our Team</h4>
         <p class="card-text">We have an amazing team to serve you.</p>
-        <a href="#" class="btn btn-primary">Meet Our Team</a>
+        <a href="/team" class="btn btn-primary">Meet Our Team</a>
       </div>
     </div>
     <div class="col-xs"><br></div>

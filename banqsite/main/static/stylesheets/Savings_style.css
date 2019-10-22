@@ -1,10 +1,12 @@
 
         body
-    {
-        background: no-repeat;
-        font-family: Arial;
-        color:cornflowerblue
-    }
+   {
+    background-color: white; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to bottom right, rgb(0, 132, 255), rgb(0, 255, 170)); /* Standard syntax (must be last) */
+    font-family: Arial;
+    color:white;
+}
+
     
     .dropdown-item:hover
     {
