@@ -75,7 +75,7 @@ def account(request):
         
 
 
-    return render(request, 'myapp/account.html',{'totalbalance':total_balance,'transaction':total_transactions,'fd':fd,'emi':emi_pending})
+    return render(request, 'myapp/account.html',{'totalbalance':total_balance,'transaction':total_transactions,'fd':fd,'emi':emi_pending,'no_acc':no_acc})
 
 def atmf(request):
     return render(request, 'myapp/ATM.html')
@@ -171,7 +171,7 @@ def accinfo(request):
 
 @login_required(login_url='/login/')
 def cards(request):
-    return render(request, 'myapp/Card.html')
+     return render(request, 'myapp/Card.html')
 
 
 def hsave(request):
