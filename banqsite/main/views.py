@@ -13,6 +13,7 @@ from datetime import datetime, timedelta
 from django.utils import formats
 from .helperfunctions import *
 from django.contrib.auth.hashers import check_password
+from itertools import chain
 
 # Create your views here.
 x=0
@@ -153,40 +154,9 @@ def emi(request):
 
 @login_required(login_url='/login/')
 def transaction(request):
-    acc=Account.objects.filter(user_id__user__username=uname)
-    no_acc=acc.count()
-    accs=[]
-    for i in acc:
-        accs.append(i.acc_no)
-    trans=[]
-    ano=[]
-    mode=[]
-    dt=[]
-    amount=[]
-    counter=[]
-
-    for i in range(no_acc):
-        t=Transaction.objects.filter(paid_from__acc_no=accs[i])
-        c=t.count()
-        z=0
-        for i in range(c):
-            trans.append(t[i])
-            counter.append(z)
-            ano.append(t[i].paid_from)
-            amount.append(t[i].amount)
-            mode.append(t[i].txn_type)
-            dt.append(t[i].date_time)
-            z=z+1
-    print(trans)
-    print(ano)
-    print(amount)
-    print(mode)
-    print(dt)
-
-    
-
-    
-    return render(request, 'myapp/Transaction.html',{'ano':ano,'amount':amount,'mode':mode,'date':dt,'counter':counter})
+    uname = request.user.username
+    transactions = Transaction.objects.filter(paid_from__user_id__user__username=uname)
+    return render(request, 'myapp/Transaction.html',{'transactions':transactions})
 
 @login_required(login_url='/login/')
 def branch(request):

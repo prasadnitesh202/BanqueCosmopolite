@@ -12,24 +12,27 @@
 	<table class="table table-bordered table-hover table-responsive-xs">
 	  <thead class="thead-dark">
 	    <tr>
-		<th scope="col">#</th>
 		<th scope="col">Account Number</th>
         <th scope="col">Amount</th>
         <th scope="col">Mode</th>
-        <th scope="col">Date</th>
-	      <th scope="col">Time</th>
+        <th scope="col">Date-Time</th>
 	    </tr>
 	  </thead>
 	  <tbody>
-		  {% for i in counter %}
+		  {% for transaction in transactions %}
 		  <!-- {% for j in ano} -->
 	    <tr>
-		  <th scope="row">{{i}}</th>
-		  <td>{{ano}}</td>
+		  <td>{{transaction.paid_from}}</td>
 		  
-	      <td>{{amount.i}}</td>
-        <td>{{mode.i }}</td>
-		<td>{{dt.i}}</td>
+	      <td>{{transaction.amount}}</td>
+	      {% if transaction.txn_type == 'A' %}
+        <td>Paid by Credit Card</td>
+        {% elif transaction.txn_type == 'B' %}
+        <td>Paid by Debit Card</td>
+        {% else %}
+        <td>Cash Transfer</td>
+        {% endif %}
+		<td>{{transaction.date_time}}</td>
 		</tr>
 		{% endfor %}
 	    <!-- <tr>
