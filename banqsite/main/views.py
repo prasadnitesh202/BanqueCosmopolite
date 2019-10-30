@@ -12,6 +12,7 @@ from .models import *
 from datetime import datetime, timedelta
 from django.utils import formats
 from .helperfunctions import *
+from django.contrib.auth.hashers import check_password
 
 # Create your views here.
 x=0
@@ -47,7 +48,50 @@ def checkin(request):
 
 @login_required(login_url='/login/')
 def payment(request):
-    return render(request, 'myapp/Payment.html')
+    if request.user.is_authenticated:
+            username = request.user.username
+            accounts = Account.objects.filter(user_id__user__username=username)
+    if request.method == 'POST':
+        payfrom = request.POST.get('payfrom', '')
+        payto = request.POST.get('payto', '')
+        amount = request.POST.get('amount', '')
+        passwordEntered = request.POST.get('pwd', '')
+        accbalance = Account.objects.get(pk=int(payfrom)).acc_balance
+        acctype = Account.objects.get(pk=int(payfrom)).acc_type
+        minBal = AccountType.objects.get(pk=acctype).minbal_type
+        currentpassword = request.user.password
+        matchcheck = check_password(passwordEntered, currentpassword)
+        if not(Account.objects.filter(pk=int(payto)).count()):
+            err1 = "Please enter valid account number"
+        else:
+            err1 = ''
+        if accbalance < int(amount):
+            err2 = "You have entered more than balance"
+        else:
+            err2 = ''
+        if accbalance - int(amount) < minBal:
+            err3 = "You have insufficient balance"
+        else:
+            err3 = ''
+        if not matchcheck:
+            err4 = "Password is incorrect"
+        else:
+            err4 = ''
+        
+
+        errors = {'err1': err1, 'err2': err2, 'err3': err3, 'err4': err4}
+
+        error_length = len(err1+err2+err3+err4)
+        if not error_length:
+            text = 'Cash transfer made by account '+payfrom+' to account '+payto
+            t=Transaction(txn_type='C', paid_from=Account.objects.get(pk=payfrom), paid_to=Account.objects.get(pk=payto), amount=int(amount), about_txn=text)
+            t.save()
+            return redirect('main:account')
+        else:
+            return render(request, 'myapp/Payment.html', {'accounts': accounts, 'err1': err1, 'err2': err2, 'err3': err3, 'err4': err4})
+
+    else:
+        return render(request, 'myapp/Payment.html', {'accounts': accounts})
 
 
 def savings(request):
@@ -318,4 +362,29 @@ def chatbot_ajax(request):
     data ={}
     if(account):
         data['is_success'] = 'Account changed'
+    return JsonResponse(data)
+
+@csrf_exempt
+def paymentacc_ajax(request):
+    data = {}
+    acc = request.POST.get('keyname', None)
+    try:
+        int(acc)
+    except ValueError:
+        data['is_success'] = 'Please enter a valid account number'
+        data['icon'] = '&#10069'
+        return JsonResponse(data)
+
+    # build a request object
+    query = Account.objects.filter(pk=int(acc))  
+    if not(query.count()):
+        data['is_success'] = 'Account does not exist'
+        data['icon'] = '&#10060'
+    else:
+        user = query[0].user_id.user
+        first_name = user.first_name
+        last_name = user.last_name
+        jsonstr = 'This account belongs to '+first_name+' '+last_name
+        data['is_success'] = jsonstr
+        data['icon'] = '&#9989'
     return JsonResponse(data)

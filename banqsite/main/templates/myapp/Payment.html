@@ -1,32 +1,68 @@
 {% extends 'myapp/header_footer.html' %}
 {% block content %}
    {% load static %}
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+.tooltip2 {
+  position: relative;
+  display: inline-block;
+  margin-top: 2%;
+}
+
+.tooltip2 .tooltiptext {
+  visibility: hidden;
+  width: 400px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+}
+
+.tooltip2:hover .tooltiptext {
+  visibility: visible;
+}
+</style>
+
 <link href="{% static 'stylesheets/Payment_style.css' %}" rel='stylesheet'>
 <br/>
 
 <!--Seletion Buttons-->
 
-<div style="padding: 0% 0% 0% 1%;" class="btn-group">
-        <h5 style="margin-top: 2%;">Select Account :</h5>
-        <p style="color: rgba(0,0,0,0);">.</p>
-    <button type="button" id="accountbtn" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Account
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#" onclick="myFunction1()">Account 1</a>
-      <a class="dropdown-item" href="#" onclick="myFunction2()">Account 2</a>
-    </div>
+        <form method="POST">
+        {% csrf_token %}
+  <div style="padding: 0% 0% 0% 1%;" class="btn-group">
+      <h5 style="margin-top: -1%; color:white;">Pay From Account </h5>
+      <p style="color: rgba(0,0,0,0);">.</p>
+      <select class="custom-select" id="Account" name="payfrom">
+  {% for account in accounts %}
+  <option  value="{{ account }}">{{ account }}</option>
+  {% endfor %}
+</select>
+  
   </div>
 
   <br/>
   <br/>
 
   <div style="padding: 0% 0% 0% 1%;" class="btn-group">
-    <h5 style="margin-top: 2%;">Pay To :</h5>
-    <p style="color: rgba(0,0,0,0);">.</p>
+    <h5 style="margin-top: 2%;">Pay To : </h5>
+    <p style="color: rgba(0,0,0,0);"> </p>
         <div class="form-group">
-           <input type="text" class="form-control" id="Receiver">       
+           <input type="text" class="form-control" id="Receiver" name="payto"> 
+           <p> {{ err1 }}</p>      
         </div>
+    <span style="margin-top: 2%; font-size: 1.2rem;" class='tooltip2' > &#10069
+      <span class="tooltiptext">Please enter a valid account number</span>
+    </span>
+
+    
 </div>
 
 <br/>
@@ -37,8 +73,10 @@
     <h5 style="margin-top: 2%;">Amount :</h5>
     <p style="color: rgba(0,0,0,0);">.</p>
         <div class="form-group">
-           <input type="text" class="form-control" id="Amount">       
-        </div>
+           <input type="text" class="form-control" id="Amount" name="amount">
+           <p> {{ err2 }}</p>
+           <p> {{ err3 }}</p>
+         </div>
 </div>
 
 <br/>
@@ -49,7 +87,8 @@
     <h5 style="margin-top: 2%;">Password :</h5>
     <p style="color: rgba(0,0,0,0);">.</p>
     <div class="form-group">
-        <input type="password" class="form-control" value="Password" id="pswd">       
+        <input type="password" class="form-control" name='pwd' id="pswd"> 
+        <p> {{ err4 }}</p>      
      </div>
     <br/>   
 
@@ -60,7 +99,8 @@
     <br/>
 
 
-    <button type="button" class="btn btn-warning" style="margin-left: 2%;">Pay</button>
+    <button type="submit" class="btn btn-warning" style="margin-left: 2%;">Pay</button>
+  </form>
 
 
 
@@ -74,17 +114,25 @@ function togglePassword() {
   }
 }
 
-function myFunction1()
-{
-  document.getElementById("accountbtn").innerHTML="Account 1";
-};
-
-function myFunction2()
-{
-  document.getElementById("accountbtn").innerHTML="Account 2";
-};
 
 
+</script>
+
+<script>
+    $(document).ready(function() {
+    $("#Receiver").on('input', function(){
+        $.ajax({
+                type:'POST',
+                url: '/paymentacc_ajax/',
+              data:  {'keyname':$('#Receiver').val()},
+              dataType: 'json',
+              success: function (data) {
+            document.getElementsByClassName('tooltip2')[0].innerHTML = data.icon +'<span class="tooltiptext">'+ data.is_success +'</span>';
+
+        }
+             });
+    });
+});
 </script>
 
 {% endblock %}}
