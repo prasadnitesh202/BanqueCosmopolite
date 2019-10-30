@@ -32,6 +32,8 @@ ALLOWED_HOSTS = ['08a62537.ngrok.io',
                  'aa2dd446.ngrok.io',
                  '738c48ab.ngrok.io',
                  '4b89ccce.ngrok.io',
+                 '0c0807f6.ngrok.io',
+                 '127.0.0.1:8000',
 ]
 
 
@@ -129,3 +131,4 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 MEDIA_URL='/media/'
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
