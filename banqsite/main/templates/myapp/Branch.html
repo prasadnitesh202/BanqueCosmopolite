@@ -1,0 +1,48 @@
+{% extends 'myapp/header_footer.html' %}
+      
+
+{% block content %}
+   {% load static %}
+   <link href="{% static 'stylesheets/Transaction_style.css' %}" rel='stylesheet'>
+
+   <style type="text/css">
+     .card-title {
+    margin-bottom: .75rem;
+    color: black;
+}
+.card-text:last-child {
+    margin-bottom: 0;
+    color: #0f111b;
+}
+   </style>
+<div class="container-fluid" > 
+    <br>
+    <div class="container" > 
+    <div class="container"> 
+    
+      <div class="row">
+    
+
+          {% for branch in branches %}
+           <div class="col-md-4">  
+             <div class="card">
+        <div class="card-body">
+          
+          <h5 class="card-title">{{ branch.br_city }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ branch.br_addr }}</h6>
+          <p class="card-text">Phone: {{ branch.br_phone }}</p>
+          
+          
+        </div>
+      </div>
+              <div class="col-xs"><br></div>
+            </div>
+            {% endfor %}
+
+
+
+        </div>
+      </div>
+      </div>
+      </div>
+{% endblock %}

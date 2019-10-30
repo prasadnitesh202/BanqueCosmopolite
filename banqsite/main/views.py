@@ -148,6 +148,9 @@ def history(request):
 def prepaid(request):
     return render(request, 'myapp/Prepaid.html')
 
+def emi(request):
+    return render(request, 'myapp/EMI.html')
+
 @login_required(login_url='/login/')
 def transaction(request):
     acc=Account.objects.filter(user_id__user__username=uname)
@@ -184,6 +187,11 @@ def transaction(request):
 
     
     return render(request, 'myapp/Transaction.html',{'ano':ano,'amount':amount,'mode':mode,'date':dt,'counter':counter})
+
+@login_required(login_url='/login/')
+def branch(request):
+    branches = Branch.objects.all()
+    return render(request, 'myapp/Branch.html', {'branches': branches})
 
 @login_required(login_url='/login/')
 def accinfo(request):

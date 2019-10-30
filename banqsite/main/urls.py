@@ -30,5 +30,7 @@ urlpatterns = [
     path('team/', views.team, name='team'),
     path('history/', views.history, name='history'),
     path('paymentacc_ajax/', views.paymentacc_ajax, name='paymentacc_ajax'),
+    path('branch/', views.branch, name='branch'),
+    path('emi/', views.emi, name='emi'),
 
     ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

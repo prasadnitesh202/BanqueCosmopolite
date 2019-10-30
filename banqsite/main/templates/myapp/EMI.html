@@ -1,0 +1,47 @@
+{% extends 'myapp/header_footer.html' %}
+      
+
+{% block content %}
+   {% load static %}
+   <link href="{% static 'stylesheets/Transaction_style.css' %}" rel='stylesheet'>
+<div class="container-fluid" style="background-color: white;;">
+        <table class="table table-bordered table-hover table-responsive-xs">
+          <thead class="thead-dark">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+              <th scope="col">Type</th>
+            <th scope="col">EMI</th>
+            <th scope="col">Total</th>
+              <th scope="col">Ends On</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Car Loan</td>
+              <td>Loan</td>
+            <td>5000</td>
+            <td>1234567</td>
+            <td>06-10-2019</td>
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td>Home Loan</td>
+                <td>Loan</td>
+                <td>50000</td>
+                <td>12345678</td>
+                <td>06-10-2019</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>Education Loan</td>
+              <td>Loan</td>
+                <td>5000</td>
+                <td>1234567</td>
+                <td>06-10-2019</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+ {% endblock %}
