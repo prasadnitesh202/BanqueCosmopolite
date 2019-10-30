@@ -35,7 +35,7 @@ background-image: linear-gradient(to bottom right, rgb(36, 134, 247), rgb(38, 50
           <div class="card text-white bg-primary mb-3">
             <div class="card-header" style="text-align: center;">Balance:</div>
             <div class="card-body">
-              <h5 class="card-title" style="text-align: center;">12345678</h5>
+              <h5 class="card-title" style="text-align: center;">{{ totalbalance }}</h5>
             </div>
           </div>
             <div class="col-xs"><br></div>
@@ -43,9 +43,9 @@ background-image: linear-gradient(to bottom right, rgb(36, 134, 247), rgb(38, 50
   
           <div class="col-md-3 col-xs-6">  
             <div class="card text-white bg-success mb-3">
-              <div class="card-header" style="text-align: center;">Transaction:</div>
+              <div class="card-header" style="text-align: center;">No Of Transaction:</div>
               <div class="card-body">
-                <h5 class="card-title" style="text-align: center;">+5000</h5>
+                <h5 class="card-title" style="text-align: center;">{{transaction}}</h5>
               </div>
             </div>
           <div class="col-xs"><br></div>
@@ -53,9 +53,9 @@ background-image: linear-gradient(to bottom right, rgb(36, 134, 247), rgb(38, 50
   
         <div class="col-md-3 col-xs-6">  
           <div class="card text-white bg-danger mb-3">
-            <div class="card-header" style="text-align: center;">Maturities:</div>
+            <div class="card-header" style="text-align: center;">Fixed Deposits:</div>
             <div class="card-body">
-              <h5 class="card-title" style="text-align: center;">2 this year</h5>
+              <h5 class="card-title" style="text-align: center;">{{ fd }}</h5>
             </div>
           </div>
           <div class="col-xs"><br></div>
@@ -65,7 +65,7 @@ background-image: linear-gradient(to bottom right, rgb(36, 134, 247), rgb(38, 50
           <div class="card text-white bg-warning mb-3">
             <div class="card-header" style="text-align: center;">EMIs:</div>
             <div class="card-body">
-              <h5 class="card-title"  style="text-align: center;">2 Pending</h5>
+              <h5 class="card-title"  style="text-align: center;">{{ emi }}</h5>
             </div>
           </div>
         </div>

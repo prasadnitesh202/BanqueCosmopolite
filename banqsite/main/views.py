@@ -72,7 +72,7 @@ def account(request):
         
 
 
-    return render(request, 'myapp/account.html')
+    return render(request, 'myapp/account.html',{'totalbalance':total_balance,'transaction':total_transactions,'fd':fd,'emi':emi_pending})
 
 def atmf(request):
     return render(request, 'myapp/ATM.html')
