@@ -150,7 +150,40 @@ def prepaid(request):
 
 @login_required(login_url='/login/')
 def transaction(request):
-    return render(request, 'myapp/Transaction.html')
+    acc=Account.objects.filter(user_id__user__username=uname)
+    no_acc=acc.count()
+    accs=[]
+    for i in acc:
+        accs.append(i.acc_no)
+    trans=[]
+    ano=[]
+    mode=[]
+    dt=[]
+    amount=[]
+    counter=[]
+
+    for i in range(no_acc):
+        t=Transaction.objects.filter(paid_from__acc_no=accs[i])
+        c=t.count()
+        z=0
+        for i in range(c):
+            trans.append(t[i])
+            counter.append(z)
+            ano.append(t[i].paid_from)
+            amount.append(t[i].amount)
+            mode.append(t[i].txn_type)
+            dt.append(t[i].date_time)
+            z=z+1
+    print(trans)
+    print(ano)
+    print(amount)
+    print(mode)
+    print(dt)
+
+    
+
+    
+    return render(request, 'myapp/Transaction.html',{'ano':ano,'amount':amount,'mode':mode,'date':dt,'counter':counter})
 
 @login_required(login_url='/login/')
 def branch(request):
@@ -159,7 +192,9 @@ def branch(request):
 
 @login_required(login_url='/login/')
 def accinfo(request):
-    return render(request, 'myapp/AccInfo.html')
+    accinfo=Account.objects.filter(user_id__user__username=uname)
+    print(accinfo)
+    return render(request, 'myapp/AccInfo.html',{'accinfo':accinfo})
 
 @login_required(login_url='/login/')
 def cards(request):
