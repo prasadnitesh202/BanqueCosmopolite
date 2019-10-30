@@ -71,8 +71,10 @@ footer h4{
       body {
         padding: 0
       }
+      
       table {
         font-size: 12px;
+        color: #020201b5;
       }
       /*
       .atm-search {
@@ -135,6 +137,7 @@ footer h4{
       #resultsTable {
         border-collapse: collapse;
         width: 240px;
+         color: #020201b5;
       }
       #rating {
         font-size: 13px;
