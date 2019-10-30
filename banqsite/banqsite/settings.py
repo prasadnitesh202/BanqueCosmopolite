@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['08a62537.ngrok.io',
                  '68faf366.ngrok.io',
                  '44090d9c.ngrok.io',
                  'aa2dd446.ngrok.io',
+                 '738c48ab.ngrok.io',
 ]
 
 
@@ -124,5 +125,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 MEDIA_URL='/media/'
