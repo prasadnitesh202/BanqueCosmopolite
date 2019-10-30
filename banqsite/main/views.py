@@ -153,6 +153,11 @@ def transaction(request):
     return render(request, 'myapp/Transaction.html')
 
 @login_required(login_url='/login/')
+def branch(request):
+    Branch.objects.all()
+    return render(request, 'myapp/Branch.html')
+
+@login_required(login_url='/login/')
 def accinfo(request):
     return render(request, 'myapp/AccInfo.html')
 
