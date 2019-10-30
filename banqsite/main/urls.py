@@ -23,6 +23,7 @@ urlpatterns = [
     path('prepaid/', views.prepaid, name='prepaid'),
     path('savings/', views.savings, name='savings'),
     path('transaction/', views.transaction, name='transaction'),
+    path('accinfo/', views.accinfo, name='accinfo'),
     path('cards/', views.cards, name='cards'),
     path('payment/', views.payment, name='payment'),
     path('mission/', views.mission, name='mission'),
