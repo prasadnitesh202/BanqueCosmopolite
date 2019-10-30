@@ -35,7 +35,45 @@ def chatbot(request):
 
 @login_required(login_url='/login/')
 def account(request):
-    return render(request, 'myapp/account.html')
+    acc=Account.objects.filter(user_id__user__username=uname)
+    no_acc=acc.count()
+    print(no_acc)
+    total_balance=0
+    accs=[]
+    total_transactions=0
+    for i in acc:
+        total_balance=total_balance+i.acc_balance
+        accs.append(i.acc_no)
+    print(total_balance)
+    print(accs)
+    for i in range(no_acc):
+        t=Transaction.objects.filter(paid_from__acc_no=accs[i]).count()
+        total_transactions=total_transactions+t
+        print(total_transactions)
+    fd=0
+    for i in range(no_acc):
+        c=Account.objects.filter(acc_no=accs[i]).filter(acc_type='FD').count()
+        fd=fd+c
+        print(fd)
+    emi_pending=0
+    for i in range(no_acc):
+        c=Loan.objects.filter(acc_no__acc_no=accs[i]).count()
+        emi_pending=emi_pending+c
+    print("emipending:"+str(emi_pending))
+
+        
+
+    
+
+
+
+
+
+
+        
+
+
+    return render(request, 'myapp/account.html',{'totalbalance':total_balance,'transaction':total_transactions,'fd':fd,'emi':emi_pending})
 
 def atmf(request):
     return render(request, 'myapp/ATM.html')
@@ -135,6 +173,8 @@ def login_req(request):
                 login(request, user)
                 print("Hi "+User.objects.get(username=username).first_name)
                 # print(Account.objects.filter(user=username))
+                global uname
+                uname=User.objects.get(username=username)
                 global x
                 x=Account.objects.filter(user_id__user__username=username)[0].acc_no
                 print("Account Number: "+str(x))
@@ -332,6 +372,112 @@ def webhook(request):
                     sum=sum+i.amount
                 text=text+', So total amount debited from debit card= '+str(sum)
         fulfillmentText={'fulfillmentText':text}
+    elif action=='fd-general':
+        if account=='Account':
+            text='Please select account number from dropdown to the left'
+        else:
+            a=Account.objects.filter(acc_no=account).filter(acc_type__acc_type='FD')
+            print(a)
+            if(a.count()==0):
+                text='This is not your fixed deposit account.If you have one in our bank please select it from the dropdown to the left'
+            else:
+                for i in a:
+
+                    text='Amount is fixed deposit is: '+str(i.acc_balance)+' and it is maturing on '+str(i.end_date)
+        fulfillmentText={'fulfillmentText':text}
+    
+    elif action=='acc-balance':
+        if account=='Account':
+            text='Please select account number from dropdown to the left'
+        else:
+            a=Account.objects.filter(acc_no=account)
+            print(a)
+            for i in a:
+                text='Your account balance is : '+str(i.acc_balance)
+        fulfillmentText={'fulfillmentText':text}
+    
+    elif action=='fd-accno':
+        acc=Account.objects.filter(user_id__user__username=uname).filter(acc_type__acc_type='FD')
+        text=''
+        if acc.count()==0:
+            text='You dont have any fixed deposit linked to any accounts. Please visit our nearest branch to open a fixed deposit accout '
+        else:
+            text=text+'You have a total of '+str(acc.count())+' fixed deposit linked to your account. Their account numbers are:  '
+            
+            for i in acc:
+                text=text+str(i.acc_no)+'and '
+        fulfillmentText={'fulfillmentText':text}
+    
+    elif action=='acc-details':
+        savings=Account.objects.filter(user_id__user__username=uname).filter(acc_type__acc_type='SA')
+        current=Account.objects.filter(user_id__user__username=uname).filter(acc_type__acc_type='CA')
+        recurring=Account.objects.filter(user_id__user__username=uname).filter(acc_type__acc_type='RD')
+        fd=Account.objects.filter(user_id__user__username=uname).filter(acc_type__acc_type='FD')
+        zerobal=Account.objects.filter(user_id__user__username=uname).filter(acc_type__acc_type='ZB')
+        text=''
+        totalacc=savings.count()+current.count()+recurring.count()+fd.count()+zerobal.count()
+        text=text+ " You have a total of "+str(totalacc)+" accounts linked to us  "
+        if savings.count()!=0:
+            text=text+ ' You have '+str(savings.count())+ ' savings account and their account numbers are  '
+            for i in savings:
+                text=text+'  '+str(i.acc_no)
+        if current.count()!=0:
+            text=text+' You have '+str(current.count())+ ' current accounts  and their account numbers are  '
+            for i in current:
+                text=text+'  '+str(i.acc_no)
+        if recurring.count()!=0:
+            text=text+' You have '+str(recurring.count())+ ' recurring accounts and their account numbers are '
+            for i in recurring:
+                text=text+'  '+str(i.acc_no)+'   '
+        if fd.count()!=0:
+            text=text+'  You have '+str(fd.count())+ ' fixed deposits  and their account numbers are '
+            for i in fd:
+                text=text+'  '+str(i.acc_no)
+        if zerobal.count()!=0:
+            text=text+'  You have '+str(zerobal.count())+ ' zero balance accounts  and their account numbers are  '
+            for i in savings:
+                text=text+'  '+str(i.acc_no)
+
+        fulfillmentText={'fulfillmentText':text}
+
+    elif action=='acc-type':
+        text=' '
+        if account=='Account':
+            text='Please select account number from dropdown to the left'
+        else:
+            a=Account.objects.filter(acc_no=account)
+            for i in a:
+                atype=str(i.acc_type)    
+            print(atype)
+            if atype=='SA':
+                text=text+'This is a savings account'
+            elif atype=='RD':
+                text=text+'This is a recurring deposit account'
+            elif atype=='FD':
+                text=text+'This is a fixed deposit account'
+            elif atype=='CA':
+                text=text+'This is a current account'
+            elif atype=='ZB':
+                text=text+'This is a zerobalance account'
+            
+        fulfillmentText={'fulfillmentText':text}
+
+        
+
+        
+
+
+
+    
+        
+                
+
+            
+        
+    
+        
+
+
 
     
 
