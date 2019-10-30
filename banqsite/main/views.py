@@ -341,6 +341,97 @@ def webhook(request):
 
                     text='Amount is fixed deposit is: '+str(i.acc_balance)+' and it is maturing on '+str(i.end_date)
         fulfillmentText={'fulfillmentText':text}
+    
+    elif action=='acc-balance':
+        if account=='Account':
+            text='Please select account number from dropdown to the left'
+        else:
+            a=Account.objects.filter(acc_no=account)
+            print(a)
+            for i in a:
+                text='Your account balance is : '+str(i.acc_balance)
+        fulfillmentText={'fulfillmentText':text}
+    
+    elif action=='fd-accno':
+        acc=Account.objects.filter(user_id__user__username=uname).filter(acc_type__acc_type='FD')
+        text=''
+        if acc.count()==0:
+            text='You dont have any fixed deposit linked to any accounts. Please visit our nearest branch to open a fixed deposit accout '
+        else:
+            text=text+'You have a total of '+str(acc.count())+' fixed deposit linked to your account. Their account numbers are:  '
+            
+            for i in acc:
+                text=text+str(i.acc_no)+'and '
+        fulfillmentText={'fulfillmentText':text}
+    
+    elif action=='acc-details':
+        savings=Account.objects.filter(user_id__user__username=uname).filter(acc_type__acc_type='SA')
+        current=Account.objects.filter(user_id__user__username=uname).filter(acc_type__acc_type='CA')
+        recurring=Account.objects.filter(user_id__user__username=uname).filter(acc_type__acc_type='RD')
+        fd=Account.objects.filter(user_id__user__username=uname).filter(acc_type__acc_type='FD')
+        zerobal=Account.objects.filter(user_id__user__username=uname).filter(acc_type__acc_type='ZB')
+        text=''
+        totalacc=savings.count()+current.count()+recurring.count()+fd.count()+zerobal.count()
+        text=text+ " You have a total of "+str(totalacc)+" accounts linked to us  "
+        if savings.count()!=0:
+            text=text+ ' You have '+str(savings.count())+ ' savings account and their account numbers are  '
+            for i in savings:
+                text=text+'  '+str(i.acc_no)
+        if current.count()!=0:
+            text=text+' You have '+str(current.count())+ ' current accounts  and their account numbers are  '
+            for i in current:
+                text=text+'  '+str(i.acc_no)
+        if recurring.count()!=0:
+            text=text+' You have '+str(recurring.count())+ ' recurring accounts and their account numbers are '
+            for i in recurring:
+                text=text+'  '+str(i.acc_no)+'   '
+        if fd.count()!=0:
+            text=text+'  You have '+str(fd.count())+ ' fixed deposits  and their account numbers are '
+            for i in fd:
+                text=text+'  '+str(i.acc_no)
+        if zerobal.count()!=0:
+            text=text+'  You have '+str(zerobal.count())+ ' zero balance accounts  and their account numbers are  '
+            for i in savings:
+                text=text+'  '+str(i.acc_no)
+
+        fulfillmentText={'fulfillmentText':text}
+
+    elif action=='acc-type':
+        text=' '
+        if account=='Account':
+            text='Please select account number from dropdown to the left'
+        else:
+            a=Account.objects.filter(acc_no=account)
+            for i in a:
+                atype=str(i.acc_type)    
+            print(atype)
+            if atype=='SA':
+                text=text+'This is a savings account'
+            elif atype=='RD':
+                text=text+'This is a recurring deposit account'
+            elif atype=='FD':
+                text=text+'This is a fixed deposit account'
+            elif atype=='CA':
+                text=text+'This is a current account'
+            elif atype=='ZB':
+                text=text+'This is a zerobalance account'
+            
+        fulfillmentText={'fulfillmentText':text}
+
+        
+
+        
+
+
+
+    
+        
+                
+
+            
+        
+    
+        
 
 
 
