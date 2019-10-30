@@ -68,7 +68,7 @@
     $("#Account").change(function(){
         $.ajax({
                 type:'POST',
-                url: '/ajax/',
+                url: '/chatbot_ajax/',
               data:  {'keyname':$('#Account option:selected').val()},
               dataType: 'json',
               success: function (data) {
