@@ -35,6 +35,7 @@ def chatbot(request):
 
 @login_required(login_url='/login/')
 def account(request):
+    uname = request.user.username
     acc=Account.objects.filter(user_id__user__username=uname)
     no_acc=acc.count()
     print(no_acc)
@@ -183,6 +184,10 @@ def transaction(request):
 
     
     return render(request, 'myapp/Transaction.html',{'ano':ano,'amount':amount,'mode':mode,'date':dt,'counter':counter})
+
+@login_required(login_url='/login/')
+def accinfo(request):
+    return render(request, 'myapp/AccInfo.html')
 
 @login_required(login_url='/login/')
 def cards(request):
