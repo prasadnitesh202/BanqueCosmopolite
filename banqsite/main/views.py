@@ -187,8 +187,8 @@ def transaction(request):
 
 @login_required(login_url='/login/')
 def branch(request):
-    Branch.objects.all()
-    return render(request, 'myapp/Branch.html')
+    branches = Branch.objects.all()
+    return render(request, 'myapp/Branch.html', {'branches': branches})
 
 @login_required(login_url='/login/')
 def accinfo(request):

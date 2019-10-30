@@ -10,6 +10,10 @@
     margin-bottom: .75rem;
     color: black;
 }
+.card-text:last-child {
+    margin-bottom: 0;
+    color: #0f111b;
+}
    </style>
 <div class="container-fluid" > 
     <br>
@@ -18,90 +22,22 @@
     
       <div class="row">
     
-          <div class="col-md-4">  
+
+          {% for branch in branches %}
+           <div class="col-md-4">  
              <div class="card">
         <div class="card-body">
-          <h5 class="card-title">My Cards</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h6>
-          <p class="card-text"></p>
+          
+          <h5 class="card-title">{{ branch.br_city }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ branch.br_addr }}</h6>
+          <p class="card-text">Phone: {{ branch.br_phone }}</p>
+          
           
         </div>
       </div>
               <div class="col-xs"><br></div>
             </div>
-    
-            <div class="col-md-4">  
-            <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">My transactions</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h6>
-          <p class="card-text"></p>
-          
-        </div>
-      </div>
-            <div class="col-xs"><br></div>
-          </div>
-    
-          <div class="col-md-4">  
-            <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">My EMIs/Loans</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card Subtitle</h6>
-          <p class="card-text"></p>
-          
-        </div>
-      </div>
-            <div class="col-xs"><br></div>
-          </div>
-
-          <div class="col-md-4">  
-              <div class="card">
-         <div class="card-body">
-           <h5 class="card-title">My Cards</h5>
-           <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-           <p class="card-text"></p>
-           
-         </div>
-       </div>
-               <div class="col-xs"><br></div>
-             </div>
-     
-             <div class="col-md-4">  
-             <div class="card">
-         <div class="card-body">
-           <h5 class="card-title">My transactions</h5>
-           <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-           <p class="card-text"></p>
-           
-         </div>
-       </div>
-             <div class="col-xs"><br></div>
-           </div>
-     
-           <div class="col-md-4">  
-             <div class="card">
-         <div class="card-body">
-           <h5 class="card-title">My EMIs/Loans</h5>
-           <h6 class="card-subtitle mb-2 text-muted">Card Subtitle</h6>
-           <p class="card-text"></p>
-           
-         </div>
-       </div>
-             <div class="col-xs"><br></div>
-           </div>
-
-
-           <div class="col-md-4">  
-             <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">My Cards</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h6>
-          <p class="card-text"></p>
-          
-        </div>
-      </div>
-              <div class="col-xs"><br></div>
-            </div>
+            {% endfor %}
 
 
 
