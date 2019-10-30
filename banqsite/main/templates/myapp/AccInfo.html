@@ -12,39 +12,19 @@
 	<table class="table table-bordered table-hover table-responsive-xs">
 	  <thead class="thead-dark">
 	    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Amount</th>
+        <th scope="col">Account Number</th>
 	      <th scope="col">Type</th>
-        <th scope="col">Mode</th>
-        <th scope="col">Date</th>
-	      <th scope="col">Time</th>
+        <th scope="col">Account Balance</th>
 	    </tr>
 	  </thead>
 	  <tbody>
+		  {% for i in accinfo %}
 	    <tr>
-	      <th scope="row">1</th>
-	      <td>5000</td>
-	      <td>Deposit</td>
-        <td>Cash</td>
-        <td>06-10-2019</td>
-        <td>01:00 PM</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">1</th>
-	      <td>1234</td>
-	      <td>Withdrawal</td>
-        <td>Debit Card</td>
-        <td>05-10-2019</td>
-        <td>04:00 PM</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">1</th>
-	      <td>65575</td>
-	      <td>Withdrawal</td>
-        <td>Challan</td>
-        <td>06-10-2019</td>
-        <td>11:00 AM</td>
-	    </tr>
+	      <td>{{i.acc_no}}</td>
+	      <td>{{i.acc_type}}</td>
+        <td>{{i.acc_balance}}</td>
+		</tr>
+		{% endfor %}
 	  </tbody>
 	</table>
 </div>

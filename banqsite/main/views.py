@@ -187,7 +187,9 @@ def transaction(request):
 
 @login_required(login_url='/login/')
 def accinfo(request):
-    return render(request, 'myapp/AccInfo.html')
+    accinfo=Account.objects.filter(user_id__user__username=uname)
+    print(accinfo)
+    return render(request, 'myapp/AccInfo.html',{'accinfo':accinfo})
 
 @login_required(login_url='/login/')
 def cards(request):
