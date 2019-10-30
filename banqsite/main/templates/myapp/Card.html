@@ -13,12 +13,12 @@
 <div style="padding: 0% 0% 0% 1%;" class="btn-group">
         <h5 style="margin-top: 2%;">Select Account :</h5>
         <p style="color: rgba(0,0,0,0);">.</p>
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-secondary dropdown-toggle" id="accountbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Account
     </button>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Account 1</a>
-      <a class="dropdown-item" href="#">Account 2</a>
+        <a class="dropdown-item" href="#" onclick="myFunction1()" id="accbtn1">Account 1</a>
+        <a class="dropdown-item" href="#" onclick="myFunction2()" id="accbtn2">Account 2</a>
     </div>
   </div>
 
@@ -27,14 +27,14 @@
 
 
   <div style="padding: 0% 0% 0% 1%;"  class="btn-group">
-        <h5 style="margin-top: 2%;">Select Card :</h5>
-        <p style="color: rgba(0,0,0,0);">........</p>
-        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Card
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" id="cardbtn1" onclick="showCard1()">Credit Card</a>
-          <a class="dropdown-item" href="#" id="cardbtn2" onclick="showCard2()">Debit Card</a>
+      <h5 style="margin-top: 2%;">Select Card :</h5>
+      <p style="color: rgba(0,0,0,0);">........</p>
+      <button type="button" id="cardbtn" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Card
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#" id="cardbtn1" onclick="showCard1()">Credit Card</a>
+        <a class="dropdown-item" href="#" id="cardbtn2" onclick="showCard2()">Debit Card</a>
         </div>
       </div>
 
@@ -138,6 +138,7 @@
       var y = document.getElementById("Card2");
       var t1 = document.getElementById("Table1");
       var t2 = document.getElementById("Table2");
+      document.getElementById("cardbtn").innerHTML="Card 1";
       if (x.style.display === "none") {
         x.style.display = "block";
         y.style.display = "none";
@@ -146,17 +147,19 @@
       } else {
         x.style.display = "none";
         t1.style.display = "none";
+        document.getElementById("cardbtn").innerHTML="Card";
       }
     }
     </script>
    
    
    <script>
-     function showCard2() {
+      function showCard2() {
       var x = document.getElementById("Card2");
       var y = document.getElementById("Card1");
       var t1 = document.getElementById("Table2");
       var t2 = document.getElementById("Table1");
+      document.getElementById("cardbtn").innerHTML="Card 2";
       if (x.style.display === "none") {
         x.style.display = "block";
         y.style.display = "none";
@@ -165,8 +168,22 @@
       } else {
         x.style.display = "none";
         t1.style.display = "none";
+        document.getElementById("cardbtn").innerHTML="Card";
       }
     }
       </script>
+    
+    <script>
+      function myFunction1()
+{
+  document.getElementById("accountbtn").innerHTML="Account 1";
+};
+    </script>
+    <script>
+      function myFunction2()
+{
+  document.getElementById("accountbtn").innerHTML="Account 2";
+};
+    </script>
 
 {% endblock %}
