@@ -34,6 +34,44 @@ def chatbot(request):
 
 @login_required(login_url='/login/')
 def account(request):
+    acc=Account.objects.filter(user_id__user__username=uname)
+    no_acc=acc.count()
+    print(no_acc)
+    total_balance=0
+    accs=[]
+    total_transactions=0
+    for i in acc:
+        total_balance=total_balance+i.acc_balance
+        accs.append(i.acc_no)
+    print(total_balance)
+    print(accs)
+    for i in range(no_acc):
+        t=Transaction.objects.filter(paid_from__acc_no=accs[i]).count()
+        total_transactions=total_transactions+t
+        print(total_transactions)
+    fd=0
+    for i in range(no_acc):
+        c=Account.objects.filter(acc_no=accs[i]).filter(acc_type='FD').count()
+        fd=fd+c
+        print(fd)
+    emi_pending=0
+    for i in range(no_acc):
+        c=Loan.objects.filter(acc_no__acc_no=accs[i]).count()
+        emi_pending=emi_pending+c
+    print("emipending:"+str(emi_pending))
+
+        
+
+    
+
+
+
+
+
+
+        
+
+
     return render(request, 'myapp/account.html')
 
 def atmf(request):
@@ -91,6 +129,8 @@ def login_req(request):
                 login(request, user)
                 print("Hi "+User.objects.get(username=username).first_name)
                 # print(Account.objects.filter(user=username))
+                global uname
+                uname=User.objects.get(username=username)
                 global x
                 x=Account.objects.filter(user_id__user__username=username)[0].acc_no
                 print("Account Number: "+str(x))
@@ -288,6 +328,21 @@ def webhook(request):
                     sum=sum+i.amount
                 text=text+', So total amount debited from debit card= '+str(sum)
         fulfillmentText={'fulfillmentText':text}
+    elif action=='fd-general':
+        if account=='Account':
+            text='Please select account number from dropdown to the left'
+        else:
+            a=Account.objects.filter(acc_no=account).filter(acc_type__acc_type='FD')
+            print(a)
+            if(a.count()==0):
+                text='This is not your fixed deposit account.If you have one in our bank please select it from the dropdown to the left'
+            else:
+                for i in a:
+
+                    text='Amount is fixed deposit is: '+str(i.acc_balance)+' and it is maturing on '+str(i.end_date)
+        fulfillmentText={'fulfillmentText':text}
+
+
 
     
 

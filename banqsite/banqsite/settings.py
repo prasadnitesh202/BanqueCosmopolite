@@ -31,6 +31,9 @@ ALLOWED_HOSTS = ['08a62537.ngrok.io',
                  '44090d9c.ngrok.io',
                  'aa2dd446.ngrok.io',
                  'b00197bc.ngrok.io',
+                 '4c793ba5.ngrok.io',
+                 '8a188054.ngrok.io',
+                 '86b6001c.ngrok.io',
 ]
 
 
