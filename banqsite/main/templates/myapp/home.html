@@ -21,9 +21,7 @@
 <!--Cards(Services)-->
 
 <div class="container" id="Services">
-  {% if user.is_authenticated %}
-<div>{{ user.last_name }}</div>
-{% endif %}
+  
   <div class="row">
     <div class="col-md-3">  
         <div class="card" style="margin: auto">
@@ -82,6 +80,8 @@
 
 
 <!--Carousel-->
+  <div class="container-fluid" id="Services" style="background-color: rgba(255,255,255,0.8);"> 
+<br> 
   <div class="bd-example">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -93,33 +93,61 @@
       <div class="carousel-inner">
       
         <div class="carousel-item active">
-          <img src='{% static "img/calc.jpg" %}' class="d-block w-100" alt="...">
+  <a href="/atm_finder">  
+    
+    
+    <img src='{% static "img/calc.jpg" %}' class="d-block w-100" alt="..." id="ATM" >
+
+          
+    <!-- <img src="img/calc.jpg" class="d-block w-100" alt="..." id="ATM"> -->
+  </a>
           <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h5>ATM Locator</h5>
+            <p>Locate ATMs near and far at the click of your mouse.</p>
           </div>
         </div>
+
+  <div class="carousel-item">
+  <a href="/chatbot">
+    
+          <img src='{% static "img/rupee.jpg" %}' class="d-block w-100" alt="..." id="Chatbot" >
+
+    
+          <!-- <img src="img/rupee.jpg"class="d-block w-100" alt="..." id="Chatbot"> -->
+  </a>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Chatbot</h5>
+            <p>Chat with Jean, our newest member of Banque Cosmopolite.</p>
+          </div>
+        </div>
+
         <div class="carousel-item">
-          <img src='{% static "img/homeloan.jpg" %}' class="d-block w-100" alt="...">
+  <a href="/payment">
+          <img src='{% static "img/homeloan.jpg" %}' class="d-block w-100" alt="..." id="Branch" >
+
+          <!-- <img src="img/homeloan.jpg" class="d-block w-100" alt="..." id="Branch"> -->
+  </a>
           <div class="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h5>Lightning Cash Transfers</h5>
+            <p>Transfer Cash instantly.</p>
           </div>
         </div>
+
         <div class="carousel-item">
-          <img src='{% static "img/rupee.jpg" %}' class="d-block w-100" alt="...">
+  <a href="/branch">
+    
+          <img src='{% static "img/stock.jpg" %}' class="d-block w-100" alt="..." id="Chatbot" >
+
+    
+          <!-- <img src="img/rupee.jpg"class="d-block w-100" alt="..." id="Chatbot"> -->
+  </a>
           <div class="carousel-caption d-none d-md-block">
-            <h5>Third slide label</h5>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            <h5>Branch Locator</h5>
+            <p>Always in your vicinity.</p>
           </div>
         </div>
-        <div class="carousel-item">
-          <img src='{% static "img/stock.jpg" %}' class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Fourth slide label</h5>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </div>
-        </div>
+
+
       </div>
       <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -131,9 +159,8 @@
       </a>
     </div>
   </div>
-
-<br>
-<h1>{{ acc }}</h1>
+<br/>
+  </div>
 
 <!--Cards(About)-->
  <div class="container" id="About"> 

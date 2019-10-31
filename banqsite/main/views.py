@@ -165,6 +165,7 @@ def branch(request):
 
 @login_required(login_url='/login/')
 def accinfo(request):
+    uname=request.user.username
     accinfo=Account.objects.filter(user_id__user__username=uname)
     print(accinfo)
     return render(request, 'myapp/AccInfo.html',{'accinfo':accinfo})
@@ -480,40 +481,7 @@ def webhook(request):
             
         fulfillmentText={'fulfillmentText':text}
 
-        
 
-        
-
-
-
-    
-        
-                
-
-            
-        
-    
-        
-
-
-
-    
-
-        
-
-    
-
-            
-
-
-
-
-
-
-
-        
-        
-    
     return JsonResponse(fulfillmentText, safe=False)
 
 @csrf_exempt
